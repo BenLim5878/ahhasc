@@ -11,7 +11,7 @@ public class Repository {
 
     public Repository(String filepath, String filename){
         this.Filename = filename;
-        this.Filepath = getClass().getResource(String.format("/%2$s/%1$s",this.Filepath,this.Filename)).getPath();
+        this.Filepath = getClass().getResource(String.format("/%1$s/%2$s",this.Filepath,this.Filename)).getPath();
     }
 
     public Repository(String filename){
