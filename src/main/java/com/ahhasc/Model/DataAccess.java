@@ -9,6 +9,8 @@ public class DataAccess {
     public AuthLogger AuthLogger = new AuthLogger("Auth.txt");
     public UserController UserController = new UserController("User.txt");
 
+
+
     private DataAccess(){
     }
 

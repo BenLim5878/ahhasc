@@ -16,6 +16,10 @@ public class AuthenticatedResult {
 
     @Override
     public String toString(){
-        return String.format("%1$s;%2$s;%3$s;%4$s",this.TimeAuthenticated.format(DataAccess.DefaultDateTimeFormat).toString(), Integer.toString(this.AuthenticatedUser.getID()),Boolean.toString(this.IsSuccessful),this.ErrorMessage);
+        if (AuthenticatedUser != null){
+            return String.format("%1$s;%2$s;%3$s;%4$s",this.TimeAuthenticated.format(DataAccess.DefaultDateTimeFormat).toString(), Integer.toString(this.AuthenticatedUser.getID()),Boolean.toString(this.IsSuccessful),this.ErrorMessage);
+        } else {
+            return String.format("%1$s;%2$s;%3$s;%4$s",this.TimeAuthenticated.format(DataAccess.DefaultDateTimeFormat).toString(),"none",Boolean.toString(this.IsSuccessful),this.ErrorMessage);
+        }
     }
 }

@@ -4,7 +4,6 @@ import com.ahhasc.Model.AuthenticatedResult;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Repository;
 import com.ahhasc.Model.User;
-import javafx.util.converter.LocalDateTimeStringConverter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -61,9 +61,9 @@ public class Session {
         String hashInput = String.format("%1$s;%2$s;%3$s;%4$s",this.TimeCreated,this.ExpiryTime,this.LoggedUser, Config.SessionScrt);
         String hashOutput = this.Hash(hashInput);
 
-        if (HashValue.trim().contains(hashOutput.trim())){
+        if (HashValue.trim().equals(hashOutput.trim())){
             this.IsLoggedIn = true;
-            this.LoggedUser = DataAccess.GetInstance().
+//            this.LoggedUser = DataAccess.GetInstance();
         } else {
             this.Clear();
         }

@@ -5,7 +5,7 @@ public class Room {
     private int RoomID;
     public int Unit;
     public int Floor;
-    public Character Block;
+    public char Block;
 
 
     public Room(int ID){
