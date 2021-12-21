@@ -9,6 +9,10 @@ public class Technician extends User {
     public ArrayList<Appointment> AddedDuty = new ArrayList<Appointment>();
     public String Specialization;
 
+    public Technician(){
+        super();
+    }
+
     public Technician(int technicianID){
         super();
         this.TechnicianID = technicianID;

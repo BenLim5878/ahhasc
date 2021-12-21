@@ -1,21 +1,16 @@
 package com.ahhasc.Model;
 
 import com.ahhasc.Config;
-import com.ahhasc.Controller.IController;
-
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class Session {
 
     private Repository _repository;
     private static Session Instance = null;
     public boolean IsLoggedIn;
-    private User LoggedUser;
+    public User LoggedUser;
     private LocalDateTime TimeCreated;
     private LocalDateTime ExpiryTime;
     private String HashValue;
@@ -24,11 +19,10 @@ public class Session {
         _repository = new Repository("Session.txt");
         _repository.Load();
         if (_repository.GetRecords().size() == 0){
-            this.IsLoggedIn = false;
-            this.LoggedUser = null;
+            this.DeleteSession();
         } else {
-            String[] sessionRecord = _repository.GetRecords().get(0).split(";");
-            this.ValidateSession(sessionRecord);
+            String[] sessionDetails = _repository.GetRecords().get(0).split(";");
+            this.ValidateSession(sessionDetails);
         }
     }
 
@@ -39,17 +33,16 @@ public class Session {
         return Instance;
     }
 
-    public void SetLoggedUser(User loggedUser){
-        this.LoggedUser = loggedUser;
-    }
-
-    public User GetLoggedUser(){
-        return this.LoggedUser;
-    }
-
-    public void Clear(){
+    public void DeleteSession(){
         this.IsLoggedIn = false;
         this.LoggedUser = null;
+        this.HashValue = "";
+        this.TimeCreated = null;
+        this.ExpiryTime = null;
+
+        if (_repository.GetRecords().size() > 0){
+            _repository.DeleteRecord(0);
+        }
     }
 
     private void ValidateSession(String[] sessionDescriptor){
@@ -58,15 +51,26 @@ public class Session {
         this.LoggedUser= new User(Integer.parseInt(sessionDescriptor[2]));
         this.HashValue = sessionDescriptor[3];
 
-        String hashInput = String.format("%1$s;%2$s;%3$s;%4$s",this.TimeCreated,this.ExpiryTime,this.LoggedUser, Config.SessionScrt);
-        String hashOutput = this.Hash(hashInput);
+        String hashOutput = this.Hash(this.ToHashInput());
 
-        if (HashValue.trim().equals(hashOutput.trim())){
+        if (this.HashValue.equals(hashOutput) && this.ExpiryTime.isAfter(LocalDateTime.now())){
             this.IsLoggedIn = true;
-//            this.LoggedUser = DataAccess.GetInstance();
+            this.LoggedUser = DataAccess.GetInstance().UserController.GetUserByID(this.LoggedUser.getID());
         } else {
-            this.Clear();
+            this.DeleteSession();
         }
+    }
+
+    public void CreateSession(AuthenticatedResult authResult){
+        this.DeleteSession();
+
+        this.TimeCreated = LocalDateTime.now();
+        this.ExpiryTime = this.TimeCreated.plusHours(4);
+        this.LoggedUser = authResult.AuthenticatedUser;
+        this.HashValue = this.Hash(this.ToHashInput());
+        this.IsLoggedIn = true;
+
+        this._repository.AddNewRecord(this.toString());
     }
 
     private String Hash(String hashInput){
@@ -74,14 +78,19 @@ public class Session {
         try{
             MessageDigest hashFunction = MessageDigest.getInstance("SHA-256");
             hashFunction.update(hashInput.getBytes());
-            hashOutput = new String(hashFunction.digest());
+            hashOutput = DataAccess.ByteToHex(hashFunction.digest());
         } catch (NoSuchAlgorithmException ex){
             ex.printStackTrace();
         }
         return hashOutput;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%1$s;%2$s;%3$s;%4$s",this.TimeCreated.format(DataAccess.DefaultDateTimeFormat),this.ExpiryTime.format(DataAccess.DefaultDateTimeFormat),this.LoggedUser.getID(),this.HashValue);
+    }
 
-
-
+    private String ToHashInput(){
+        return String.format("%1$s;%2$s;%3$s;%4$s",this.TimeCreated.format(DataAccess.DefaultDateTimeFormat),this.ExpiryTime.format(DataAccess.DefaultDateTimeFormat),Integer.toString(this.LoggedUser.getID()), Config.SessionScrt);
+    }
 }

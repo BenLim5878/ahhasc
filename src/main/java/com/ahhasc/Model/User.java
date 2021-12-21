@@ -1,5 +1,10 @@
 package com.ahhasc.Model;
 
+import com.ahhasc.Config;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class User {
     private int ID;
     public String FullName;
@@ -31,5 +36,17 @@ public class User {
     }
     public void setID(int ID){
         this.ID = ID;
+    }
+
+    public static String EncryptPassword(String password){
+        String input = String.format("%1$s;%2$s",password, Config.PasswordScrt);
+        try{
+            MessageDigest hashFunction = MessageDigest.getInstance("SHA-256");
+            hashFunction.update(input.getBytes());
+            return DataAccess.ByteToHex(hashFunction.digest());
+        } catch (NoSuchAlgorithmException ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 }

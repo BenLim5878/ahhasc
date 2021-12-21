@@ -25,7 +25,11 @@ public class AuthLogger implements IController{
             String[] record =  authRecord.split(";");
             AuthenticatedResult authDesc = new AuthenticatedResult();
             authDesc.TimeAuthenticated = LocalDateTime.parse(record[AuthenticatedResult.TIMEAUTHENTICATED], DataAccess.DefaultDateTimeFormat);
-            authDesc.AuthenticatedUser = new User(Integer.parseInt(record[AuthenticatedResult.USERID]));
+            if (record[AuthenticatedResult.USERID].equals("none")){
+                authDesc.AuthenticatedUser = new User();
+            } else {
+                authDesc.AuthenticatedUser = new User(Integer.parseInt(record[AuthenticatedResult.USERID]));
+            }
             authDesc.IsSuccessful = Boolean.parseBoolean(record[AuthenticatedResult.ISSUCCESSFUL]);
             authDesc.ErrorMessage = record[AuthenticatedResult.ERRORMESSAGE];
             _data.add(authDesc);

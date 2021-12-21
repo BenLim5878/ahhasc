@@ -4,6 +4,8 @@ import com.ahhasc.Model.*;
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class UserController implements  IController{
 
@@ -37,21 +39,27 @@ public class UserController implements  IController{
     public AuthenticatedResult Authenticate(String email, String password){
         AuthenticatedResult authResult = new AuthenticatedResult();
         for (User user : _data){
-            if (user.EmailAddress.toLowerCase().trim().equals(email.toLowerCase().trim()) && user.Password.equals(password)){
+            if (user.EmailAddress.toLowerCase().trim().equals(email.toLowerCase().trim()) && user.Password.equals(User.EncryptPassword(password))){
                 authResult.AuthenticatedUser = user;
                 authResult.IsSuccessful = true;
                 authResult.TimeAuthenticated = LocalDateTime.now();
                 authResult.ErrorMessage = "none";
+                Session.GetInstance().CreateSession(authResult);
                 break;
             } else {
                 authResult.AuthenticatedUser = null;
                 authResult.IsSuccessful = false;
                 authResult.TimeAuthenticated = LocalDateTime.now();
-                authResult.ErrorMessage = "Invalid Credentials";
+                authResult.ErrorMessage = String.format("Invalid Credentials (Trying to access: %1$s)",email);
+                Session.GetInstance().DeleteSession();
             }
         }
         DataAccess.GetInstance().AuthLogger.AddRecord(authResult);
         return authResult;
+    }
+
+    public void Logout(){
+        Session.GetInstance().DeleteSession();
     }
 
     public User GetUserByID(int userID){
@@ -73,55 +81,47 @@ public class UserController implements  IController{
         return out;
     }
 
-    public ArrayList<Technician> GetTechnician(Technician technicianDescriptor) throws IllegalAccessException {
-        ArrayList<Technician> out = new ArrayList<Technician>();
-        ArrayList<Technician> technicians = GetTechnicians();
-        Field fieldList[] = Technician.class.getDeclaredFields();
-        for (Field field:fieldList){
-            Object targetVal = field.get(technicianDescriptor);
-            if (targetVal != null){
-                for (Technician technician: technicians){
-                    Object val = field.get(technician);
-                    if (val.equals(targetVal)){
-                        if (!out.contains(technician)){
-                            out.add(technician);
-                        }
-                    }
-                }
+    public Technician GetTechnician(int technicianID) {
+        for (Technician technician:this.GetTechnicians()){
+            if (technician.getTechnicianID() == technicianID){
+                return technician;
             }
         }
-        return out;
+        return null;
     }
 
     public void RegisterTechnician(Technician technicianDescriptor){
-        int userID = _data.size();
-        int technicianID = GetTechnicians().size();
+        int userID = GetNewUserID();
+        int technicianID = GetNewTechnicianID();
+        String password = technicianDescriptor.Password;
 
         technicianDescriptor.setID(userID);
         technicianDescriptor.setTechnicianID(technicianID);
         technicianDescriptor.Role = User.TECHNICIAN;
+        technicianDescriptor.Password = User.EncryptPassword(password);
 
         _data.add(technicianDescriptor);
         _repository.AddNewRecord(technicianDescriptor.toString());
     }
 
     public void UpdateTechnician(Technician technicianDescriptor){
-        _data.set(technicianDescriptor.getID(),technicianDescriptor);
-        _repository.UpdateRecord(technicianDescriptor.getID(),technicianDescriptor.toString());
+        int dataIndex = this.GetTechnicianIndex(technicianDescriptor.getTechnicianID());
+        _repository.UpdateRecord(dataIndex,technicianDescriptor.toString());
+        _data.set(dataIndex,technicianDescriptor);
     }
 
     public void DeleteTechnician(int technicianID){
         for (User user: _data){
-            if (user.Role == User.TECHNICIAN){
+            if (user.Role.equals(User.TECHNICIAN)){
                 Technician technician = (Technician) user;
                 if (technician.getTechnicianID() == technicianID){
-                    _data.remove(user);
                     _repository.DeleteRecord(_data.indexOf(user));
+                    _data.remove(user);
+                    break;
                 }
             }
         }
     }
-
 
     private Manager ToManager(String[] record){
         Manager manager = new Manager(Integer.parseInt(record[2]));
@@ -146,4 +146,33 @@ public class UserController implements  IController{
         return technician;
     }
 
+    private int GetNewUserID(){
+        if (_data.size() == 0){
+            return 0;
+        }
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        _data.forEach(user -> ids.add(user.getID()));
+        return (Collections.max(ids) + 1);
+    }
+
+    private int GetNewTechnicianID(){
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        if (this.GetTechnicians().size() == 0){
+            return 0;
+        }
+        this.GetTechnicians().forEach(technician -> ids.add(technician.getTechnicianID()));
+        return (Collections.max(ids) + 1);
+    }
+
+    private int GetTechnicianIndex(int technicianID){
+        for (User user: _data){
+            if (user.Role.equals(User.TECHNICIAN)){
+                Technician technician = (Technician) user;
+                if (technician.getTechnicianID() == technicianID){
+                    return _data.indexOf(user);
+                }
+            }
+        }
+        return -1;
+    }
 }
