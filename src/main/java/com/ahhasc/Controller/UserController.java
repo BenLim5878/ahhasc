@@ -11,7 +11,6 @@ public class UserController implements  IController{
 
     private Repository _repository;
     private ArrayList<User> _data = new ArrayList<User>();
-    private Technician technicianDescriptor;
 
     public UserController(String storeFileName){
         this._repository = new Repository(storeFileName);

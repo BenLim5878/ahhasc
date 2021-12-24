@@ -1,7 +1,10 @@
 package com.ahhasc.Model;
 
 import com.ahhasc.Controller.*;
+
+import java.lang.reflect.Field;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class DataAccess {
     private static DataAccess Instance = null;
@@ -24,7 +27,4 @@ public class DataAccess {
         for (byte byt : bytes) result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
         return result.toString();
     }
-
-
-
 }
