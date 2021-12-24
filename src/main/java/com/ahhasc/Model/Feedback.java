@@ -35,4 +35,15 @@ public class Feedback {
     public void setDescription(String Description){
         this.Description = Description;
     }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "%1$s;%2$s;%3$s;%4$s",
+                Integer.toString(this.getID()),
+                Float.toString(this.getRating()),
+                this.getDescription(),
+                this.CreatedAt.format(DataAccess.DefaultDateTimeFormat).toString()
+        );
+    }
 }

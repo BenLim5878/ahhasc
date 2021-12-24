@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class User {
-    private int ID;
+    private Integer ID;
     public String FullName;
     public String Role;
     public String TelNumber;

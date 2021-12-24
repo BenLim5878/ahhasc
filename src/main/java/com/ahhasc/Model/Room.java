@@ -5,34 +5,33 @@ import java.util.ArrayList;
 
 public class Room {
 
-    private int RoomID;
-    public int Unit;
-    public int Floor;
-    public char Block;
+    private Integer RoomID;
+    public Integer Unit;
+    public Integer Floor;
+    public String Block;
 
 
     public Room(int ID){
-
+        this.RoomID = ID;
     }
 
     public Room(){}
 
-    public int GetRoomID(){
+    public int getRoomID(){
         return this.RoomID;
     }
 
-    public void SetRoomID(int roomID){
+    public void setRoomID(int roomID){
         this.RoomID = roomID;
     }
 
-    @Override
-    public boolean equals(Object object){
+    public boolean Contains(Object object){
         ArrayList<Field> fieldToMatch = new ArrayList<Field>();
         boolean out = false;
-        for (Field customerField: this.getClass().getDeclaredFields()){
+        for (Field roomField: this.getClass().getDeclaredFields()){
             try {
-                if (customerField.get(object) != null){
-                    fieldToMatch.add(customerField);
+                if (roomField.get(object) != null){
+                    fieldToMatch.add(roomField);
                 }
             } catch(IllegalAccessException ex){
                 ex.printStackTrace();
@@ -42,9 +41,12 @@ public class Room {
             try {
                 var target = field.get(object);
                 var value = field.get(this);
-                if (value.equals(target)){
-                    out = true;
-                    continue;
+                if (value != null){
+                    if (value.equals(target)){
+                        out = true;
+                        continue;
+                    }
+                    out = false;
                 }
                 out = false;
             } catch(IllegalAccessException ex){
@@ -52,5 +54,16 @@ public class Room {
             }
         }
         return out;
+    }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "%1$s;%2$s;%3$s;%4$s",
+                Integer.toString(this.getRoomID()),
+                this.Block,
+                Integer.toString(this.Floor),
+                Integer.toString(this.Unit)
+        );
     }
 }

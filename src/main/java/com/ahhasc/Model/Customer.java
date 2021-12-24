@@ -1,12 +1,10 @@
 package com.ahhasc.Model;
 
-import com.ahhasc.Controller.IController;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class Customer{
-    private int CustomerID;
+    private Integer CustomerID;
     public Room Room;
     public String FullName;
     public String EmailAddress;
@@ -17,6 +15,10 @@ public class Customer{
         this.CustomerID= customerID;
     }
 
+    public Customer(){
+        super();
+    }
+
     public int getCustomerID(){
         return this.CustomerID;
     }
@@ -25,34 +27,49 @@ public class Customer{
         this.CustomerID = customerID;
     }
 
-//    @Override
-//    public boolean equals(Object object) {
-//        ArrayList<Field> fieldToMatch = new ArrayList<Field>();
-//        boolean out = false;
-//        for (Field customerField: this.getClass().getDeclaredFields()){
-//            try {
-//                if (customerField.get(object) != null){
-//                    fieldToMatch.add(customerField);
-//                }
-//            } catch(IllegalAccessException ex){
-//                ex.printStackTrace();
-//            }
-//        }
-//        for (Field field: fieldToMatch){
-//            try {
-//                var target = field.get(object);
-//                var value = field.get(this);
-//                if (value.equals(target)){
-//                    out = true;
-//                    continue;
-//                }
-//                out = false;
-//            } catch(IllegalAccessException ex){
-//                ex.printStackTrace();
-//            }
-//        }
-//        return out;
-//    }
+
+    public boolean Contains(Object object) {
+        ArrayList<Field> fieldToMatch = new ArrayList<Field>();
+        boolean out = false;
+        for (Field customerField: this.getClass().getDeclaredFields()){
+            try {
+                if (customerField.get(object) != null){
+                    fieldToMatch.add(customerField);
+                }
+            } catch(IllegalAccessException ex){
+                ex.printStackTrace();
+            }
+        }
+        for (Field field: fieldToMatch){
+            try {
+                var target = field.get(object);
+                var value = field.get(this);
+                if (field.getName() == "Room"){
+                  Room targetRoom = (Room) target;
+                  Room valueRoom = (Room) value;
+                    if (valueRoom != null){
+                        if (valueRoom.Contains(targetRoom)){
+                            out = true;
+                            continue;
+                        }
+                        out = false;
+                    }
+                } else {
+                    if (value != null){
+                        if (value.equals(target)){
+                            out = true;
+                            continue;
+                        }
+                        out = false;
+                    }
+                }
+                out = false;
+            } catch(IllegalAccessException ex){
+                ex.printStackTrace();
+            }
+        }
+        return out;
+    }
 
     @Override
     public String toString(){
@@ -62,7 +79,7 @@ public class Customer{
                 this.EmailAddress,
                 this.FullName,
                 this.TelNumber,
-                Integer.toString(this.Room.GetRoomID())
+                Integer.toString(this.Room.getRoomID())
         );
     }
 }

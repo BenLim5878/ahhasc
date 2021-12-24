@@ -1,0 +1,3 @@
+0;ben@gmail.com;Ben Lim;532;0
+1;kiki@gmail.com;Kiki;999;0
+2;lala@gmail.com;Lala;999;0

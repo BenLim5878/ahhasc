@@ -9,10 +9,24 @@ import java.util.ArrayList;
 public class DataAccess {
     private static DataAccess Instance = null;
     public static DateTimeFormatter DefaultDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    public AuthLogger AuthLogger = new AuthLogger("Auth.txt");
-    public UserController UserController = new UserController("User.txt");
+    public static DateTimeFormatter DefaultDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    // Controllers
+    public AuthLogger AuthLogger;
+    public UserController UserController;
+    public CustomerController CustomerController;
+    public RoomController RoomController;
+    public PaymentController PaymentController;
+    public FeedbackController FeedbackController;
+    public AppointmentController AppointmentController;
 
     private DataAccess(){
+        AuthLogger = new AuthLogger("Auth.txt");
+        UserController= new UserController("User.txt");
+        CustomerController = new CustomerController("Customer.txt");
+        RoomController = new RoomController("Room.txt");
+        PaymentController = new PaymentController("Payment.txt");
+        FeedbackController = new FeedbackController("Feedback.txt");
+        AppointmentController = new AppointmentController("Appointment.txt");
     }
 
     public static DataAccess GetInstance(){

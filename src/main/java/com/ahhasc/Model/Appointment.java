@@ -1,6 +1,5 @@
 package com.ahhasc.Model;
 
-import java.beans.FeatureDescriptor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -36,5 +35,38 @@ public class Appointment {
 
     public void setFeedback(Feedback feedback){
         this.Feedback = feedback;
+    }
+
+    public ArrayList<Integer> GetActiveTechnicianIds(){
+        ArrayList<Integer> out = new ArrayList<Integer>();
+        for (Technician technician: this.ActiveTechnicians){
+            out.add(technician.getID());
+        }
+        return out;
+    }
+
+    @Override
+    public String toString(){
+        String technicians = "";
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        this.ActiveTechnicians.forEach(technician -> ids.add(technician.getTechnicianID()));
+        for (int id: ids){
+            if (ids.indexOf(id) == (ids.size() -1)){
+                technicians += id;
+                continue;
+            }
+            technicians += (id + ",");
+        }
+        return String.format(
+                "%1$s;%2$s;%3$s;%4$s;%5$s;%6$s;%7$s;%8$s",
+                Integer.toString(this.ID),
+                this.StartTime.format(DataAccess.DefaultDateTimeFormat).toString(),
+                Integer.toString(this.BookingCustomer.getCustomerID()),
+                Integer.toString(this.ActiveManager.getManagerID()),
+                technicians,
+                Integer.toString(this.Payment.getID()),
+                Boolean.toString(this.IsCompleted),
+                Integer.toString(this.Feedback.getID())
+        );
     }
 }

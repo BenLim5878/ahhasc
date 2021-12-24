@@ -25,19 +25,21 @@ public class CustomerController  implements IController{
             customer.EmailAddress = record[1];
             customer.FullName = record[2];
             customer.TelNumber = record[3];
-            customer.Room = new Room(Integer.parseInt(record[4]));
+            customer.Room =  new Room(Integer.parseInt(record[4]));
             _data.add(customer);
         }
     }
 
     public ArrayList<Customer> GetCustomers(){
+        _data.forEach(customer -> customer.Room = DataAccess.GetInstance().RoomController.GetRoom(new Room(customer.Room.getRoomID())).get(0));
         return this._data;
     }
 
     public ArrayList<Customer> GetCustomer(Customer customerDescriptor){
         ArrayList<Customer> out = new ArrayList<Customer>();
         for (Customer customer: this.GetCustomers()){
-            if (customer.equals(customerDescriptor)){
+            if (customer.Contains(customerDescriptor)){
+                customer.Room = DataAccess.GetInstance().RoomController.GetRoom(new Room(customer.Room.getRoomID())).get(0);
                 out.add(customer);
             }
         }
@@ -65,11 +67,14 @@ public class CustomerController  implements IController{
         _data.remove(dataIndex);
     }
 
-    public void ValidateCustomer(int customerID, Room roomDescriptor){
+    public boolean ValidateCustomer(int customerID, Room roomDescriptor){
         ArrayList<Customer> customers = this.GetCustomer(new Customer(customerID));
         Customer customer = customers.get(0);
-        Room customerRoom = customer.Room;
 
+        if (customer.Room.Contains(roomDescriptor)){
+            return true;
+        }
+        return false;
     }
 
     private int GetCustomerIndex(int customerID){

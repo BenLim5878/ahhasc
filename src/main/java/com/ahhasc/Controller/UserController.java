@@ -80,10 +80,29 @@ public class UserController implements  IController{
         return out;
     }
 
+    public ArrayList<Manager> GetManagers(){
+        ArrayList<Manager> out = new ArrayList<Manager>();
+        for (User user: this._data){
+            if (user.Role.equals(User.MANAGER)){
+                out.add((Manager)user);
+            }
+        }
+        return out;
+    }
+
     public Technician GetTechnician(int technicianID) {
         for (Technician technician:this.GetTechnicians()){
             if (technician.getTechnicianID() == technicianID){
                 return technician;
+            }
+        }
+        return null;
+    }
+
+    public Manager GetManager(int managerID){
+        for (Manager manager: this.GetManagers()){
+            if (manager.getManagerID() == managerID){
+                return manager;
             }
         }
         return null;

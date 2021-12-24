@@ -29,6 +29,12 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.ahhasc.Main</mainClass>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <launcher>ahhasc</launcher>
+                    <jlinkImageName>ahhasc-img</jlinkImageName>
+                    <jlinkZipName>ahhasc</jlinkZipName>
+                    <mainClass>com.ahhasc.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
