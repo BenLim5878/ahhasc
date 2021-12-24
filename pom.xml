@@ -11,8 +11,23 @@
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.0.1</version>
+            <version>17</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.brouillard.oss</groupId>
+            <artifactId>cssfx</artifactId>
+            <version>11.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>materialfx</artifactId>
+            <version>11.12.0</version>
         </dependency>
     </dependencies>
 
@@ -34,14 +49,6 @@
                     <launcher>ahhasc</launcher>
                     <jlinkImageName>ahhasc-img</jlinkImageName>
                     <jlinkZipName>ahhasc</jlinkZipName>
-                    <mainClass>com.ahhasc.Main</mainClass>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
                     <mainClass>com.ahhasc.Main</mainClass>
                 </configuration>
             </plugin>
