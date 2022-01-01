@@ -12,6 +12,7 @@ public class Appointment {
     public Payment Payment;
     private boolean IsCompleted;
     private Feedback Feedback;
+    public String Description;
 
     public int getAppointmentID(){
         return this.ID;
@@ -50,15 +51,19 @@ public class Appointment {
         String technicians = "";
         ArrayList<Integer> ids = new ArrayList<Integer>();
         this.ActiveTechnicians.forEach(technician -> ids.add(technician.getTechnicianID()));
-        for (int id: ids){
-            if (ids.indexOf(id) == (ids.size() -1)){
-                technicians += id;
-                continue;
+        if (ids.size() > 0){
+            for (int id: ids){
+                if (ids.indexOf(id) == (ids.size() -1)){
+                    technicians += id;
+                    continue;
+                }
+                technicians += (id + ",");
             }
-            technicians += (id + ",");
+        } else{
+            technicians = "none";
         }
         return String.format(
-                "%1$s;%2$s;%3$s;%4$s;%5$s;%6$s;%7$s;%8$s",
+                "%1$s;%2$s;%3$s;%4$s;%5$s;%6$s;%7$s;%8$s;%9$s",
                 Integer.toString(this.ID),
                 this.StartTime.format(DataAccess.DefaultDateTimeFormat).toString(),
                 Integer.toString(this.BookingCustomer.getCustomerID()),
@@ -66,7 +71,8 @@ public class Appointment {
                 technicians,
                 Integer.toString(this.Payment.getID()),
                 Boolean.toString(this.IsCompleted),
-                Integer.toString(this.Feedback.getID())
+                Integer.toString(this.Feedback.getID()),
+                this.Description
         );
     }
 }

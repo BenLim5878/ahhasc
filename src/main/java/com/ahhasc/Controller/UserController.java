@@ -35,7 +35,7 @@ public class UserController implements  IController{
         }
     }
 
-    public AuthenticatedResult Authenticate(String email, String password){
+    public AuthenticatedResult Authenticate(String email, String password, boolean isUserSaved){
         AuthenticatedResult authResult = new AuthenticatedResult();
         for (User user : _data){
             if (user.EmailAddress.toLowerCase().trim().equals(email.toLowerCase().trim()) && user.Password.equals(User.EncryptPassword(password))){
@@ -43,7 +43,7 @@ public class UserController implements  IController{
                 authResult.IsSuccessful = true;
                 authResult.TimeAuthenticated = LocalDateTime.now();
                 authResult.ErrorMessage = "none";
-                Session.GetInstance().CreateSession(authResult);
+                Session.GetInstance().CreateSession(authResult,isUserSaved);
                 break;
             } else {
                 authResult.AuthenticatedUser = null;
@@ -108,11 +108,25 @@ public class UserController implements  IController{
         return null;
     }
 
-    public void RegisterTechnician(Technician technicianDescriptor){
+    public RegistrationResult RegisterTechnician(Technician technicianDescriptor){
+        RegistrationResult out = new RegistrationResult();
+        // Check if the account exists
+        for (Technician technician : this.GetTechnicians()){
+            if (technician.EmailAddress.toLowerCase().equals(technicianDescriptor.EmailAddress.toLowerCase())){
+                out.IsSuccessful = false;
+                out.Message = "Account already exist";
+                return out;
+            }
+        }
         int userID = GetNewUserID();
         int technicianID = GetNewTechnicianID();
         String password = technicianDescriptor.Password;
-
+        // Check if the password meet minimum requirement
+        if (password.length() < 8){
+            out.IsSuccessful = false;
+            out.Message = "Password must be more than 8 characters";
+            return out;
+        }
         technicianDescriptor.setID(userID);
         technicianDescriptor.setTechnicianID(technicianID);
         technicianDescriptor.Role = User.TECHNICIAN;
@@ -120,6 +134,10 @@ public class UserController implements  IController{
 
         _data.add(technicianDescriptor);
         _repository.AddNewRecord(technicianDescriptor.toString());
+
+        out.Message = "Account registered successfully";
+        out.IsSuccessful = true;
+        return out;
     }
 
     public void UpdateTechnician(Technician technicianDescriptor){

@@ -2,6 +2,7 @@ package com.ahhasc.Controller;
 
 import com.ahhasc.Model.*;
 
+import java.awt.event.TextEvent;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,14 +27,17 @@ public class AppointmentController implements IController {
             appointment.StartTime = LocalDateTime.parse(record[1], DataAccess.DefaultDateTimeFormat);
             appointment.BookingCustomer = new Customer(Integer.parseInt(record[2]));
             appointment.ActiveManager = new Manager(Integer.parseInt(record[3]));
-            String[] techniciansIds = record[4].split(",");
-            for (int i = 0; i < techniciansIds.length;i++){
-                int id = Integer.parseInt(techniciansIds[i]);
-                appointment.ActiveTechnicians.add(new Technician(id));
+            if (!record[4].equals("none")){
+                String[] techniciansIds = record[4].split(",");
+                for (int i = 0; i < techniciansIds.length;i++){
+                    int id = Integer.parseInt(techniciansIds[i]);
+                    appointment.ActiveTechnicians.add(new Technician(id));
+                }
             }
             appointment.Payment = new Payment(Integer.parseInt(record[5]));
             appointment.setIsCompleted(Boolean.parseBoolean(record[6]));
             appointment.setFeedback(new Feedback(Integer.parseInt(record[7])));
+            appointment.Description = record[8];
             _data.add(appointment);
         }
     }
@@ -84,6 +88,16 @@ public class AppointmentController implements IController {
                         out.add(ResolveIds(appointment));
                     }
                 }
+            }
+        }
+        return out;
+    }
+
+    public ArrayList<Appointment> GetUnassignedAppointment(){
+        ArrayList<Appointment> out = new ArrayList<Appointment>();
+        for (Appointment appointment: this.GetAppointments()){
+            if (appointment.ActiveTechnicians.size() == 0){
+                out.add(appointment);
             }
         }
         return out;

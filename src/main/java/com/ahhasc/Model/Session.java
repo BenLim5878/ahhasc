@@ -61,7 +61,7 @@ public class Session {
         }
     }
 
-    public void CreateSession(AuthenticatedResult authResult){
+    public void CreateSession(AuthenticatedResult authResult, boolean isUserSaved){
         this.DeleteSession();
 
         this.TimeCreated = LocalDateTime.now();
@@ -70,7 +70,9 @@ public class Session {
         this.HashValue = this.Hash(this.ToHashInput());
         this.IsLoggedIn = true;
 
-        this._repository.AddNewRecord(this.toString());
+        if (isUserSaved){
+            this._repository.AddNewRecord(this.toString());
+        }
     }
 
     private String Hash(String hashInput){

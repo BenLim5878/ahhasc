@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="682.0" prefWidth="361.0" style="-fx-background-color: #FDFDFD;">
+         <children>
+            <VBox prefHeight="434.0" prefWidth="289.0">
+               <VBox.margin>
+                  <Insets top="110.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="23.0" prefWidth="144.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../material/applogo.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #4C7C53;" text="PixaService" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="12.0" top="4.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Calibri" size="21.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="63.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets left="48.0" right="48.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="466.0" prefWidth="733.0" style="-fx-background-color: #8CABA2;">
+         <children>
+            <ImageView fitHeight="477.0" fitWidth="738.0" layoutX="1.0" layoutY="114.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../material/loginworkerimg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
