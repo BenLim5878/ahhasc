@@ -1,0 +1,24 @@
+@font-face {
+    src:url("/font/montserrat/Montserrat-Medium.ttf");
+}
+
+@font-face {
+    src:url("/font/inter/Inter-SemiBold.ttf");
+}
+
+@font-face {
+    src:url("/font/inter/Inter-Medium.ttf");
+}
+
+.appname {
+    -fx-font-family: 'Montserrat Medium';
+    -fx-font-size: 19;
+}
+
+.text-semibold{
+    -fx-font-family: 'Inter SemiBold';
+}
+
+.text-medium{
+    -fx-font-family: 'Inter Medium';
+}

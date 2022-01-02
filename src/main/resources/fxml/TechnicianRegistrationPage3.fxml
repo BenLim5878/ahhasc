@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianRegistrationPage3">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1088.0">
+         <children>
+            <VBox prefHeight="682.0" prefWidth="361.0" style="-fx-background-color: #FDFDFD;" styleClass="left-content">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="535.0" prefWidth="358.0">
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="144.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../material/applogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fx:id="appname" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #4C7C53;" styleClass="appname" text="PixaService" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="12.0" top="4.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="inputField" alignment="TOP_CENTER" prefHeight="351.0" prefWidth="262.0">
+                           <VBox.margin>
+                              <Insets top="37.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Almost done" textFill="#4d4d4d">
+                                 <font>
+                                    <Font name="Nunito Bold" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label text="What's your password gonna look like" textFill="#4d4d4d">
+                                 <font>
+                                    <Font name="Nunito Regular" size="14.0" />
+                                 </font>
+                              </Label>
+                              <VBox prefHeight="63.0" prefWidth="264.0">
+                                 <VBox.margin>
+                                    <Insets top="35.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Label text="Password" textFill="#405431">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F5F5; -fx-border-radius: 5;">
+                                       <children>
+                                          <PasswordField fx:id="passwordField" onKeyTyped="#validateInput" prefHeight="46.0" prefWidth="240.0" style="-fx-background-color: transparent; -fx-prompt-text-fill: #4D4D4D;">
+                                             <effect>
+                                                <DropShadow offsetX="2.0" offsetY="2.0">
+                                                   <color>
+                                                      <Color red="0.8823529481887817" green="0.8823529481887817" blue="0.8823529481887817" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <font>
+                                                <Font name="Nunito Regular" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </PasswordField>
+                                          <Button fx:id="passwordModifier" ellipsisString="" mnemonicParsing="false" onMousePressed="#onPasswordModifierClicked" onMouseReleased="#onPasswordModifierReleased" prefHeight="46.0" prefWidth="38.0" style="-fx-background-color: transparent;" text="Button" textFill="TRANSPARENT">
+                                             <graphic>
+                                                <ImageView fx:id="passwordModifierIcon" fitHeight="17.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../material/hidepasswordicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetX="2.0" offsetY="2.0">
+                                             <color>
+                                                <Color red="0.8823529481887817" green="0.8823529481887817" blue="0.8823529481887817" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="63.0" prefWidth="264.0">
+                                 <children>
+                                    <Label text="Comfirm Password" textFill="#405431">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="comfirmPasswordField" disable="true" onKeyTyped="#validateInput" prefHeight="40.0" prefWidth="264.0" style="-fx-background-color: #F5F5F5;">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetX="2.0" offsetY="2.0">
+                                             <color>
+                                                <Color red="0.8823529481887817" green="0.8823529481887817" blue="0.8823529481887817" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="26.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Label fx:id="errorMessageLabel" text="Passowrd doesn't match" textFill="#d33434" visible="false">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Nunito Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="262.0">
+                           <children>
+                              <Button fx:id="backBtn" mnemonicParsing="false" onMouseClicked="#onBackButtonClicked" prefHeight="25.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Back" textFill="#7d8a7e">
+                                 <HBox.margin>
+                                    <Insets right="140.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Nunito Regular" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="nextBtn" disable="true" mnemonicParsing="false" onMouseClicked="#onNextButtonClicked" onMouseEntered="#onNextBtnHovered" onMouseExited="#onNextBtnExit" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: transparent;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fx:id="nextIcon" fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../material/nextbtnimg.png" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="48.0" right="48.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="466.0" prefWidth="733.0" style="-fx-background-color: #6B726B;" styleClass="right-content">
+               <children>
+                  <ImageView fitHeight="529.0" fitWidth="525.0" layoutX="113.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../material/registerworkerimg.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <fx:include fx:id="modalControl" source="ModalControl.fxml" />
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/registration.css" />
+   </stylesheets>
+</Pane>

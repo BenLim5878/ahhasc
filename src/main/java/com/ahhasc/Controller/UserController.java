@@ -38,7 +38,7 @@ public class UserController implements  IController{
     public AuthenticatedResult Authenticate(String email, String password, boolean isUserSaved){
         AuthenticatedResult authResult = new AuthenticatedResult();
         for (User user : _data){
-            if (user.EmailAddress.toLowerCase().trim().equals(email.toLowerCase().trim()) && user.Password.equals(User.EncryptPassword(password))){
+            if (user.EmailAddress.trim().equalsIgnoreCase(email.toLowerCase().trim()) && user.Password.equals(User.EncryptPassword(password))){
                 authResult.AuthenticatedUser = user;
                 authResult.IsSuccessful = true;
                 authResult.TimeAuthenticated = LocalDateTime.now();
@@ -112,7 +112,7 @@ public class UserController implements  IController{
         RegistrationResult out = new RegistrationResult();
         // Check if the account exists
         for (Technician technician : this.GetTechnicians()){
-            if (technician.EmailAddress.toLowerCase().equals(technicianDescriptor.EmailAddress.toLowerCase())){
+            if (technician.EmailAddress.equalsIgnoreCase(technicianDescriptor.EmailAddress)){
                 out.IsSuccessful = false;
                 out.Message = "Account already exist";
                 return out;
@@ -131,6 +131,7 @@ public class UserController implements  IController{
         technicianDescriptor.setTechnicianID(technicianID);
         technicianDescriptor.Role = User.TECHNICIAN;
         technicianDescriptor.Password = User.EncryptPassword(password);
+        technicianDescriptor.EmailAddress = technicianDescriptor.EmailAddress.toLowerCase();
 
         _data.add(technicianDescriptor);
         _repository.AddNewRecord(technicianDescriptor.toString());
@@ -179,6 +180,7 @@ public class UserController implements  IController{
         technician.FullName = record[5];
         technician.TelNumber = record[6];
         technician.Specialization = record[7];
+        technician.Description = record[8];
         return technician;
     }
 

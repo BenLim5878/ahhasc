@@ -19,9 +19,9 @@
             <version>17</version>
         </dependency>
         <dependency>
-            <groupId>fr.brouillard.oss</groupId>
-            <artifactId>cssfx</artifactId>
-            <version>11.5.0</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>17</version>
         </dependency>
         <dependency>
             <groupId>io.github.palexdev</groupId>

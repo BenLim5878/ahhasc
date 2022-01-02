@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianRegistrationPage1">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1088.0">
+         <children>
+            <VBox prefHeight="682.0" prefWidth="361.0" style="-fx-background-color: #FDFDFD;" styleClass="left-content">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="535.0" prefWidth="358.0">
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="144.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../material/applogo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Text fx:id="appname" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #4C7C53;" styleClass="appname" text="PixaService" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="12.0" top="4.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="inputField" alignment="TOP_CENTER" prefHeight="351.0" prefWidth="262.0">
+                           <children>
+                              <Text fill="#4d4d4d" strokeType="OUTSIDE" strokeWidth="0.0" text="Get started">
+                                 <font>
+                                    <Font name="Nunito Bold" size="21.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="By telling us your">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Nunito Regular" size="14.0" />
+                                 </font>
+                              </Text>
+                              <HBox prefHeight="29.0" prefWidth="253.0" />
+                              <VBox prefHeight="63.0" prefWidth="264.0">
+                                 <children>
+                                    <Text fill="#405431" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nameField" onKeyTyped="#validateInput" prefHeight="42.0" prefWidth="253.0" style="-fx-background-color: F5F5F5;">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetX="2.0" offsetY="2.0">
+                                             <color>
+                                                <Color red="0.8815789222717285" green="0.8815789222717285" blue="0.8815789222717285" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="63.0" prefWidth="264.0">
+                                 <children>
+                                    <Text fill="#405431" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="emailAddressField" onKeyTyped="#validateInput" prefHeight="42.0" prefWidth="253.0" style="-fx-background-color: F5F5F5;">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetX="2.0" offsetY="2.0">
+                                             <color>
+                                                <Color red="0.8815789222717285" green="0.8815789222717285" blue="0.8815789222717285" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="22.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Text fx:id="emailAddressErrorMsg" fill="#ae3f3f" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid Email Address" visible="false">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <VBox prefHeight="63.0" prefWidth="264.0">
+                                 <children>
+                                    <Text fill="#405431" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone Number">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="telephoneNumberField" onKeyTyped="#validateInput" prefHeight="42.0" prefWidth="253.0" style="-fx-background-color: F5F5F5;">
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <effect>
+                                          <DropShadow offsetX="2.0" offsetY="2.0">
+                                             <color>
+                                                <Color red="0.8815789222717285" green="0.8815789222717285" blue="0.8815789222717285" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="17.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Text fx:id="telephoneNumberErrorMsg" fill="#ae3f3f" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid Telephone Number" textAlignment="CENTER" visible="false">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="37.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="262.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#onBackButtonClicked" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: transparent;" text="Back to login" textFill="#7d8a7e">
+                                 <HBox.margin>
+                                    <Insets right="110.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Nunito Regular" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="nextBtn" disable="true" mnemonicParsing="false" onMouseClicked="#onNextButtonClicked" onMouseEntered="#onNextBtnHovered" onMouseExited="#onNextBtnExit" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: transparent;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fx:id="nextIcon" fitHeight="49.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../material/nextbtnimg.png" />
+                                       </image>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="48.0" right="48.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="466.0" prefWidth="733.0" style="-fx-background-color: #6B726B;" styleClass="right-content">
+               <children>
+                  <ImageView fitHeight="529.0" fitWidth="525.0" layoutX="113.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../material/registerworkerimg.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <fx:include fx:id="modalControl" source="ModalControl.fxml" />
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/registration.css" />
+   </stylesheets>
+</Pane>

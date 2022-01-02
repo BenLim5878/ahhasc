@@ -5,11 +5,14 @@ import com.ahhasc.Controller.*;
 import java.lang.reflect.Field;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DataAccess {
     private static DataAccess Instance = null;
     public static DateTimeFormatter DefaultDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static DateTimeFormatter DefaultDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final String EmailRegex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     // Controllers
     public AuthLogger AuthLogger;
     public UserController UserController;
@@ -40,5 +43,30 @@ public class DataAccess {
         StringBuffer result = new StringBuffer();
         for (byte byt : bytes) result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
         return result.toString();
+    }
+
+    public static String Capitalize(String str) {
+        char[] charArray = str.toCharArray();
+        boolean foundSpace = true;
+
+        for(int i = 0; i < charArray.length; i++) {
+            if(Character.isLetter(charArray[i])) {
+                if(foundSpace) {
+                    charArray[i] = Character.toUpperCase(charArray[i]);
+                    foundSpace = false;
+                }
+            }
+            else {
+                foundSpace = true;
+            }
+        }
+         String out = String.valueOf(charArray);
+        return out;
+    }
+
+    public static boolean IsValidEmailAddress(String email) {
+        Pattern pattern = Pattern.compile(EmailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

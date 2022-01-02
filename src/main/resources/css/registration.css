@@ -1,0 +1,11 @@
+.window{
+    -fx-background-color: transparent;
+}
+
+.left-content{
+    -fx-background-radius: 15 0 0 15;
+}
+
+.right-content{
+    -fx-background-radius: 0 15 15 0;
+}
