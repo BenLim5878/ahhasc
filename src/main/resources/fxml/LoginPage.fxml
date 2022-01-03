@@ -163,6 +163,6 @@
             </HBox>
          </children>
       </AnchorPane>
-      <fx:include fx:id="modalControl" source="ModalControl.fxml"></fx:include>
+      <fx:include fx:id="modalControl" source="Component/ModalControl.fxml" />
    </children>
 </Pane>

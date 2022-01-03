@@ -3,7 +3,7 @@ package com.ahhasc.Model;
 import java.time.LocalDateTime;
 
 public class Feedback {
-    private int ID;
+    private Integer ID;
     private float Rating;
     private String Description;
     public LocalDateTime CreatedAt;
@@ -12,11 +12,11 @@ public class Feedback {
         this.ID = ID;
     }
 
-    public int getID(){
+    public Integer getID(){
         return this.ID;
     }
 
-    public void setID(int ID){
+    public void setID(Integer ID){
         this.ID = ID;
     }
 

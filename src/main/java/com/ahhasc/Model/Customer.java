@@ -56,7 +56,7 @@ public class Customer{
                     }
                 } else {
                     if (value != null){
-                        if (value.equals(target)){
+                        if (value.toString().equalsIgnoreCase(target.toString())){
                             out = true;
                             continue;
                         }

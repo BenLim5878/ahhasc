@@ -1,0 +1,19 @@
+.combobox .text-field{
+    -fx-background-color: transparent;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 14.2;
+    -fx-text-fill: #656565;
+}
+
+.combobox{
+    -fx-background-color: #E0F3DD ;
+    -fx-background-radius: 12;
+}
+
+.combobox .arrow-button{
+    -fx-background-color: transparent;
+}
+
+.combobox .arrow-button:hover{
+    -fx-cursor: hand;
+}

@@ -6,6 +6,7 @@ import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Technician;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
+import com.ahhasc.View.Helper.NodeHelper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

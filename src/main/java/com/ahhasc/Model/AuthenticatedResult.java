@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AuthenticatedResult {
+
     public LocalDateTime TimeAuthenticated;
     public boolean IsSuccessful;
     public User AuthenticatedUser;

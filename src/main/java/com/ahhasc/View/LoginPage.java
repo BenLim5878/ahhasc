@@ -8,6 +8,9 @@ import com.ahhasc.Model.RegistrationResult;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.AbstractModalWindow;
 import com.ahhasc.View.Component.ModalControl;
+import com.ahhasc.View.Helper.NodeHelper;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -41,6 +44,7 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
         appname.setText(Config.Appname);
         validateInput();
         modalControlController.changeTheme(ModalControl.Light);
+        NodeHelper.RemoveTextFieldFocus(emailAddressField,appname);
     }
 
     @FXML

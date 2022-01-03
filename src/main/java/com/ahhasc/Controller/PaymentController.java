@@ -46,13 +46,14 @@ public class PaymentController implements IController{
         return null;
     }
 
-    public void AddPayment(Payment paymentDescriptor){
+    public int AddPayment(Payment paymentDescriptor){
         int paymentID = GetNewPaymentID();
 
         paymentDescriptor.setID(paymentID);
 
         _data.add(paymentDescriptor);
         _repository.AddNewRecord(paymentDescriptor.toString());
+        return paymentID;
     }
 
     public void UpdatePayment(Payment paymentDescriptor){

@@ -1,5 +1,8 @@
 package com.ahhasc;
 
+import com.ahhasc.Model.*;
+import com.ahhasc.View.ManagerAppointmentManagePage;
+import com.ahhasc.View.ManagerTechnicianManagePage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.paint.Color;
@@ -14,19 +17,18 @@ public class Main extends Application{
     private static Stage _mainStage;
 
     public static void main(String[] args) {
+        Session.GetInstance().LoggedUser = DataAccess.GetInstance().UserController.GetUserByID(1);
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        _mainStage = stage;
         System.setProperty("prism.lcdtext", "false");
-        FXMLLoader login = new FXMLLoader(ResourceLoader.LoadURL("/fxml/LoginPage.fxml"));
-        Scene scene = new Scene(login.load(), 1088, 681);
-        stage.setScene(scene);
-        scene.getWindow().centerOnScreen();
+        ManagerAppointmentManagePage controller = (ManagerAppointmentManagePage) SwitchScene("ManagerAppointmentManagerPage.fxml");
+        controller.LoadAppointment(DataAccess.GetInstance().AppointmentController.GetAppointments().get(2));
         stage.setResizable(false);
         stage.setTitle(Config.Appname);
-        scene.setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
         _mainStage = stage;
@@ -40,6 +42,7 @@ public class Main extends Application{
         Scene newScene = new Scene(loader.load());
         newScene.setFill(Color.TRANSPARENT);
         _mainStage.setScene(newScene);
+        newScene.getWindow().centerOnScreen();
         return loader.getController();
     }
 

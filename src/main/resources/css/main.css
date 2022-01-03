@@ -22,3 +22,19 @@
 .text-medium{
     -fx-font-family: 'Inter Medium';
 }
+
+.system-appname{
+    -fx-font-family: 'Montserrat Medium';
+    -fx-font-size: 16.87;
+}
+
+.main-container{
+    -fx-background-color:  #F2F8F6;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
+.util-button:hover{
+    -fx-background-color: #CBDFC8 !important;
+}
+

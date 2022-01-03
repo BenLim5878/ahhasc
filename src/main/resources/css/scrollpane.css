@@ -1,0 +1,7 @@
+.scrollpane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+}
+
+.scrollpane .scroll-bar:vertical .thumb{
+    -fx-background-color: #8CABA2;
+}

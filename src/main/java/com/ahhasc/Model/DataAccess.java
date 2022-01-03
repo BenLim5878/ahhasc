@@ -12,6 +12,7 @@ public class DataAccess {
     private static DataAccess Instance = null;
     public static DateTimeFormatter DefaultDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static DateTimeFormatter DefaultDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static DateTimeFormatter DefaultTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
     private static final String EmailRegex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
     // Controllers
     public AuthLogger AuthLogger;

@@ -7,13 +7,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="modalControls" alignment="TOP_RIGHT" prefWidth="1088.0" style="-fx-background-color: transparent;       -fx-background-radius: 15 15 0 0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.ModalControl">
+<HBox fx:id="modalControls" alignment="TOP_RIGHT" pickOnBounds="false" prefWidth="1088.0" style="-fx-background-color: transparent;       -fx-background-radius: 15 15 0 0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.ModalControl">
 <children>
     <Button fx:id="minimizeButton" mnemonicParsing="false" onMouseClicked="#minimizeWindow" onMouseEntered="#minimizeMouseEnter" onMouseExited="#minimizeMouseExit" prefHeight="14.0" prefWidth="20.0" style="-fx-background-color: transparent; -fx-background-radius: 5;">
         <graphic>
             <ImageView fx:id="minimizeButtonIcon" fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../material/windowminimizedark.png" />
+                    <Image url="@../../material/windowminimizedark.png" />
                 </image>
             </ImageView>
         </graphic>
@@ -28,7 +28,7 @@
         <graphic>
             <ImageView fx:id="closeButtonIcon" fitHeight="13.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../material/windowclosedark.png" />
+                    <Image url="@../../material/windowclosedark.png" />
                 </image>
             </ImageView>
         </graphic>

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Payment {
-    private int ID;
+    private Integer ID;
     public boolean IsResolved = false;
     public LocalDate DueDate;
     public Float Amount;
@@ -20,7 +20,7 @@ public class Payment {
         this.Amount = amount;
     }
 
-    public int getID(){return this.ID;}
+    public Integer getID(){return this.ID;}
     public void setID(int ID){
         this.ID = ID;
     }
@@ -31,7 +31,7 @@ public class Payment {
                 "%1$s;%2$s;%3$s;%4$s",
                 Integer.toString(this.getID()),
                 Float.toString(this.Amount),
-                this.DueDate.format(DataAccess.DefaultDateTimeFormat).toString(),
+                this.DueDate.format(DataAccess.DefaultDateFormat).toString(),
                 Boolean.toString(this.IsResolved)
         );
     }

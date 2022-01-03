@@ -36,7 +36,9 @@ public class AppointmentController implements IController {
             }
             appointment.Payment = new Payment(Integer.parseInt(record[5]));
             appointment.setIsCompleted(Boolean.parseBoolean(record[6]));
-            appointment.setFeedback(new Feedback(Integer.parseInt(record[7])));
+            if (!record[7].equals("none")){
+                appointment.setFeedback(new Feedback(Integer.parseInt(record[7])));
+            }
             appointment.Description = record[8];
             _data.add(appointment);
         }
@@ -105,8 +107,9 @@ public class AppointmentController implements IController {
 
     public void AddAppointment(Appointment appointmentDescriptor){
         int appointmentID = GetNewAppointmentID();
-
+        int paymentID =  DataAccess.GetInstance().PaymentController.AddPayment(appointmentDescriptor.Payment);
         appointmentDescriptor.setAppointmentID(appointmentID);
+        appointmentDescriptor.Payment.setID(paymentID);
 
         _data.add(appointmentDescriptor);
         _repository.AddNewRecord(appointmentDescriptor.toString());
@@ -114,6 +117,7 @@ public class AppointmentController implements IController {
 
     public void UpdateAppointment(Appointment appointmentDescriptor){
         int dataIndex = this.GetAppointmentIndex(appointmentDescriptor.getAppointmentID());
+        DataAccess.GetInstance().PaymentController.UpdatePayment(appointmentDescriptor.Payment);
         _repository.UpdateRecord(dataIndex,appointmentDescriptor.toString());
         _data.set(dataIndex, appointmentDescriptor);
     }
@@ -155,8 +159,11 @@ public class AppointmentController implements IController {
         }
         // Payment
         appointment.Payment = DataAccess.GetInstance().PaymentController.GetPayment(appointment.Payment.getID());
+
         // Feedback
-        appointment.setFeedback(DataAccess.GetInstance().FeedbackController.GetFeedback(appointment.getFeedback().getID()));
+        if (appointment.getFeedback() != null){
+            appointment.setFeedback(DataAccess.GetInstance().FeedbackController.GetFeedback(appointment.getFeedback().getID()));
+        }
 
         return appointment;
     }

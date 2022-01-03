@@ -1,5 +1,7 @@
 package com.ahhasc.Model;
 
+import com.ahhasc.ResourceLoader;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,12 +13,12 @@ public class Repository {
 
     public Repository(String filepath, String filename){
         this.Filename = filename;
-        this.Filepath = getClass().getResource(String.format("/%1$s/%2$s",this.Filepath,this.Filename)).getPath();
+        this.Filepath =  ResourceLoader.LoadURL(String.format("/%1$s/%2$s",filepath,this.Filename)).getPath();
     }
 
     public Repository(String filename){
         this.Filename = filename;
-        this.Filepath = getClass().getResource(String.format("/store/%1$s",this.Filename)).getPath();
+        this.Filepath = ResourceLoader.LoadURL(String.format("/store/%1$s",this.Filename)).getPath();
     }
 
     public void Load(){

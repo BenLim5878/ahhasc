@@ -205,7 +205,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <fx:include fx:id="modalControl" source="ModalControl.fxml" />
+      <fx:include fx:id="modalControl" source="Component/ModalControl.fxml" />
    </children>
    <stylesheets>
       <URL value="@../css/main.css" />

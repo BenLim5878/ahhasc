@@ -1,0 +1,24 @@
+.textarea .scroll-pane{
+    -fx-background-color: transparent;
+}
+
+.textarea .scroll-pane .viewport .corner{
+    -fx-background-color: red;
+}
+
+.textarea .scroll-pane .corner{
+    -fx-background-color: transparent;
+}
+
+.textarea{
+    -fx-focus-color: transparent;
+    -fx-border-width: 0;
+    -fx-text-box-border: 0;
+}
+
+.textarea .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.textarea .scroll-pane .content{
+    -fx-background-color: transparent;
+}

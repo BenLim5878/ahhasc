@@ -1,0 +1,54 @@
+.tableview{
+    -fx-background-color: white;
+    -fx-background-radius: 11.5;
+}
+
+.tableview .column-header-background {
+    -fx-background-color: white;
+}
+
+.tableview .column-header-background .filler {
+    -fx-background-color: white;
+}
+
+.tableview .placeholder {
+    -fx-text-fill: #4c4c4c;
+    -fx-font-family: Nunito;
+    -fx-font-size: 12;
+}
+
+
+.tableview .table-column{
+    -fx-background-radius: 15 15 0 0;
+    -fx-background-color: white;
+    -fx-font-family: Nunito;
+    -fx-font-size: 15;
+    -fx-pref-height:50;
+    -fx-border-color: #c4c4c4;
+    -fx-border-width: 0 0 1.5 0;
+    -fx-alignment: CENTER;
+}
+
+.tableview .table-column .label{
+    -fx-text-fill: #4c4c4c;
+    -fx-font-family: Nunito;
+    -fx-font-size: 15;
+}
+
+.tableview .table-row-cell:filled:selected {
+    -fx-background: -fx-control-inner-background ;
+    -fx-background-color: -fx-table-cell-border-color, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-table-cell-border-color: derive(-fx-color, 5%);
+}
+.tableview .table-row-cell:odd:filled:selected {
+    -fx-background: -fx-control-inner-background-alt ;
+}
+
+.tableview .scroll-bar{
+    -fx-background-color: transparent;
+}
+
+.tableview .scroll-bar .thumb{
+    -fx-background-color: #8CABA2;
+}

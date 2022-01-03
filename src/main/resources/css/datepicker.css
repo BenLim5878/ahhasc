@@ -1,0 +1,16 @@
+.datepicker{
+    -fx-background-color:  #E0F3DD;
+    -fx-background-radius: 12;
+}
+
+.datepicker .date-picker-display-node{
+    -fx-background-color: transparent;
+}
+
+.datepicker .arrow-button{
+    -fx-background-color: transparent;
+}
+
+.datepicker .arrow-button:hover{
+    -fx-cursor: hand;
+}

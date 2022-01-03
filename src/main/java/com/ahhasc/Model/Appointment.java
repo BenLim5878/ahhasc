@@ -55,7 +55,7 @@ public class Appointment {
             for (int id: ids){
                 if (ids.indexOf(id) == (ids.size() -1)){
                     technicians += id;
-                    continue;
+                    break;
                 }
                 technicians += (id + ",");
             }
@@ -69,9 +69,9 @@ public class Appointment {
                 Integer.toString(this.BookingCustomer.getCustomerID()),
                 Integer.toString(this.ActiveManager.getManagerID()),
                 technicians,
-                Integer.toString(this.Payment.getID()),
+                this.Payment.getID() != null ? Integer.toString(this.Payment.getID()) : "none"  ,
                 Boolean.toString(this.IsCompleted),
-                Integer.toString(this.Feedback.getID()),
+                this.getFeedback() != null ? Integer.toString(this.getFeedback().getID()) : "none" ,
                 this.Description
         );
     }

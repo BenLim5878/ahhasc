@@ -20,7 +20,7 @@
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1088.0">
          <children>
-            <VBox prefHeight="682.0" prefWidth="361.0" style="-fx-background-color: #FDFDFD;" styleClass="left-content">
+            <VBox fx:id="mainContent" prefHeight="682.0" prefWidth="361.0" style="-fx-background-color: #FDFDFD;" styleClass="left-content">
                <children>
                   <VBox alignment="CENTER" prefHeight="535.0" prefWidth="358.0">
                      <VBox.margin>
@@ -207,7 +207,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <fx:include fx:id="modalControl" source="ModalControl.fxml" />
+      <fx:include fx:id="modalControl" source="Component/ModalControl.fxml" />
    </children>
    <stylesheets>
       <URL value="@../css/main.css" />

@@ -5,11 +5,13 @@ import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Technician;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
+import com.ahhasc.View.Helper.NodeHelper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +24,8 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
     private TextField nameField, emailAddressField, telephoneNumberField;
     @FXML
     private Text emailAddressErrorMsg, telephoneNumberErrorMsg;
+    @FXML
+    private VBox mainContent;
 
     public TechnicianRegistrationPage1(){
         super();
@@ -30,8 +34,8 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.technicianDescriptor = new Technician();
+        NodeHelper.RemoveTextFieldFocus(nameField,mainContent);
         modalControlController.changeTheme(ModalControl.Light);
-        // force the field to be numeric only
         telephoneNumberField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,

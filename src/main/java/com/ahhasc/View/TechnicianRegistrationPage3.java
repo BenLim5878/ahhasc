@@ -9,6 +9,7 @@ import com.ahhasc.Model.Technician;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
+import com.ahhasc.View.Helper.NodeHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -36,6 +37,7 @@ public class TechnicianRegistrationPage3 extends AbstractTechnicianRegistrationP
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.technicianDescriptor = new Technician();
+        NodeHelper.RemoveTextFieldFocus(passwordField, passwordModifierIcon);
         modalControlController.changeTheme(ModalControl.Light);
         validateInput();
     }
