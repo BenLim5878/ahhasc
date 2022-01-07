@@ -17,7 +17,7 @@ public class Room {
 
     public Room(){}
 
-    public int getRoomID(){
+    public Integer getRoomID(){
         return this.RoomID;
     }
 

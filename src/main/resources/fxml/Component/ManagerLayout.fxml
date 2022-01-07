@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="layout" pickOnBounds="false" prefHeight="175.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.MenuLayout">
    <children>
-      <HBox layoutX="220.0" layoutY="50.27" pickOnBounds="false" prefHeight="36.03" prefWidth="552.0" style="-fx-background-color: white; -fx-background-radius: 23;">
+      <HBox layoutX="310.0" layoutY="50.0" pickOnBounds="false" prefHeight="37.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 23;">
          <children>
             <Button fx:id="menuButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-background-radius: 23; -fx-border-radius: 23;" text="Menu" textFill="#5e5e5e">
                <font>
@@ -29,14 +29,6 @@
                </cursor>
             </Button>
             <Button fx:id="customerButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-background-radius: 23; -fx-border-radius: 23;" text="Customer" textFill="#5e5e5e">
-               <font>
-                  <Font name="Nunito Bold" size="15.33" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="administrationButton" mnemonicParsing="false" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: transparent; -fx-background-radius: 23;" text="Administration" textFill="#5e5e5e">
                <font>
                   <Font name="Nunito Bold" size="15.33" />
                </font>

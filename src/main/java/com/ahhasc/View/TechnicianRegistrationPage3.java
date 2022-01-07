@@ -1,8 +1,5 @@
 package com.ahhasc.View;
 
-import com.ahhasc.Config;
-import com.ahhasc.Main;
-import com.ahhasc.Model.AuthenticatedResult;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.RegistrationResult;
 import com.ahhasc.Model.Technician;
@@ -10,6 +7,7 @@ import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
 import com.ahhasc.View.Helper.NodeHelper;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -88,7 +86,7 @@ public class TechnicianRegistrationPage3 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor.Password = password;
 
         RegistrationResult res = DataAccess.GetInstance().UserController.RegisterTechnician(this.technicianDescriptor);
-        LoginPage controller =  (LoginPage) Main.SwitchScene("LoginPage.fxml");
+        LoginPage controller =  (LoginPage) WindowApp.SetScene("LoginPage.fxml");
         controller.processRegistrationResult(res);
     }
 
@@ -98,7 +96,7 @@ public class TechnicianRegistrationPage3 extends AbstractTechnicianRegistrationP
 
         this.technicianDescriptor.Password = password;
 
-       TechnicianRegistrationPage2 controller = (TechnicianRegistrationPage2) Main.SwitchScene("TechnicianRegistrationPage2.fxml");
+       TechnicianRegistrationPage2 controller = (TechnicianRegistrationPage2) WindowApp.SetScene("TechnicianRegistrationPage2.fxml");
        controller.InjectTechnicianDetails(this.technicianDescriptor);
        controller.LoadTechnicianDetails();
     }

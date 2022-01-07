@@ -5,3 +5,7 @@
 .scrollpane .scroll-bar:vertical .thumb{
     -fx-background-color: #8CABA2;
 }
+
+.scrollpane .viewport{
+    -fx-background-color: transparent;
+}

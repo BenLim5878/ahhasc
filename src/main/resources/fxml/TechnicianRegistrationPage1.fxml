@@ -118,6 +118,9 @@
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Nunito Regular" size="12.0" />
+                                 </font>
                               </Text>
                               <VBox prefHeight="63.0" prefWidth="264.0">
                                  <children>
@@ -150,6 +153,9 @@
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="Nunito Regular" size="12.0" />
+                                 </font>
                               </Text>
                            </children>
                            <VBox.margin>

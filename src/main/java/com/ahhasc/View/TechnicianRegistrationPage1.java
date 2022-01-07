@@ -1,13 +1,11 @@
 package com.ahhasc.View;
 
-import com.ahhasc.Main;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Technician;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
 import com.ahhasc.View.Helper.NodeHelper;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -36,19 +34,7 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor = new Technician();
         NodeHelper.RemoveTextFieldFocus(nameField,mainContent);
         modalControlController.changeTheme(ModalControl.Light);
-        telephoneNumberField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    telephoneNumberField.setText(newValue.replaceAll("[^\\d]", ""));
-                }
-                if (telephoneNumberField.getText().length() > 14) {
-                    String s = telephoneNumberField.getText().substring(0, 14);
-                    telephoneNumberField.setText(s);
-                }
-            }
-        });
+        NodeHelper.setTextfieldDigitOnly(telephoneNumberField);
     }
 
     @Override
@@ -75,7 +61,7 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
         }
 
         // Validate Telephone Number
-        if (telephoneNumber.length() < 8 && telephoneNumber.trim().length()>0){
+        if (!DataAccess.IsValidTelephoneNumber(telephoneNumber) && telephoneNumber.length() > 0){
             telephoneNumberErrorMsg.setVisible(true);
         } else {
             telephoneNumberErrorMsg.setVisible(false);
@@ -98,13 +84,13 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor.EmailAddress = emailAddress;
         this.technicianDescriptor.TelNumber = telephoneNumber;
 
-        TechnicianRegistrationPage2 controller = (TechnicianRegistrationPage2) Main.SwitchScene("TechnicianRegistrationPage2.fxml");
+        TechnicianRegistrationPage2 controller = (TechnicianRegistrationPage2) WindowApp.SetScene("TechnicianRegistrationPage2.fxml");
         controller.InjectTechnicianDetails(this.technicianDescriptor);
         controller.LoadTechnicianDetails();
     }
 
     @FXML
     private void onBackButtonClicked() throws IOException {
-        Main.SwitchScene("LoginPage.fxml");
+        WindowApp.SetScene("LoginPage.fxml");
     }
 }

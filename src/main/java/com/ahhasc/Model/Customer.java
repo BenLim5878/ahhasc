@@ -19,7 +19,7 @@ public class Customer{
         super();
     }
 
-    public int getCustomerID(){
+    public Integer getCustomerID(){
         return this.CustomerID;
     }
 

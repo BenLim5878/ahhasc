@@ -17,7 +17,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianRegistrationPage3">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1088.0">
@@ -119,7 +118,7 @@
                               </VBox>
                               <VBox prefHeight="63.0" prefWidth="264.0">
                                  <children>
-                                    <Label text="Comfirm Password" textFill="#405431">
+                                    <Label text="Confirm Password" textFill="#405431">
                                        <font>
                                           <Font name="Nunito Regular" size="12.0" />
                                        </font>

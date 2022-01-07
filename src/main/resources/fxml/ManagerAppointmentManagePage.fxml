@@ -69,12 +69,12 @@
                                                 </Text>
                                                 <AnchorPane prefHeight="0.0" prefWidth="336.0">
                                                    <children>
-                                                      <TextField fx:id="searchField" layoutY="4.0" onKeyTyped="#onSearchFieldType" prefHeight="41.0" prefWidth="214.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12 0 0 12;">
+                                                      <TextField fx:id="searchField" layoutY="4.0" onKeyTyped="#onSearchFieldType" prefHeight="41.0" prefWidth="214.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 6.7 0 0 6.7;">
                                                          <font>
                                                             <Font name="Nunito Regular" size="14.2" />
                                                          </font>
                                                       </TextField>
-                                                      <Button fx:id="searchTypeButton" layoutX="209.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onSearchTypeButtonClick" prefHeight="41.0" prefWidth="89.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 0 12 12 0;" styleClass="util-button" text="Customer ID" textFill="#424242">
+                                                      <Button fx:id="searchTypeButton" layoutX="209.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onSearchTypeButtonClick" prefHeight="41.0" prefWidth="89.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 0 6.7 6.7 0;" styleClass="util-button" text="Customer ID" textFill="#424242">
                                                          <font>
                                                             <Font name="Nunito Regular" size="12.0" />
                                                          </font>
@@ -211,7 +211,7 @@
                                                       <Insets bottom="6.13" top="6.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <TextField fx:id="paymentField" onKeyTyped="#onPaymentKeyType" prefHeight="42.0" prefWidth="292.0" promptText="RM" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
+                                                <TextField fx:id="paymentField" onKeyTyped="#onPaymentKeyType" prefHeight="42.0" prefWidth="292.0" promptText="RM" style="-fx-background-color: E0F3DD; -fx-background-radius: 6.7;">
                                                    <font>
                                                       <Font name="Nunito Regular" size="14.2" />
                                                    </font>
@@ -270,7 +270,7 @@
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <TextArea fx:id="descriptionField" onKeyTyped="#onDescriptionType" prefHeight="112.0" prefWidth="429.0" style="-fx-background-color: #E0F3DD; -fx-background-radius: 12; -fx-border-radius: 12;" styleClass="textarea">
+                                                <TextArea fx:id="descriptionField" onKeyTyped="#onDescriptionType" prefHeight="112.0" prefWidth="429.0" style="-fx-background-color: #E0F3DD; -fx-background-radius: 6.7; -fx-border-radius: 6.7;" styleClass="textarea">
                                                    <font>
                                                       <Font name="Nunito Regular" size="14.2" />
                                                    </font>
@@ -331,6 +331,6 @@
         <URL value="@../css/combobox.css" />
        <URL value="@../css/datepicker.css" />
        <URL value="@../css/textarea.css" />
-       <URL value="@../css/main.css" />
+      <URL value="@../css/main.css" />
     </stylesheets>
 </VBox>

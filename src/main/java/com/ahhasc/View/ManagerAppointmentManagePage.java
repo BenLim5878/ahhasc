@@ -1,35 +1,22 @@
 package com.ahhasc.View;
 
-import com.ahhasc.Main;
 import com.ahhasc.Model.*;
 import com.ahhasc.View.Component.ManagerAppointmentSideMenu;
 import com.ahhasc.View.Component.MenuLayout;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.ahhasc.View.Helper.NodeHelper;
+import com.ahhasc.WindowApp;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.util.converter.DateStringConverter;
-import javafx.util.converter.DateTimeStringConverter;
 
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ManagerAppointmentManagePage implements Initializable {
@@ -65,7 +52,7 @@ public class ManagerAppointmentManagePage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menuLayoutController.SetTab(MenuLayout.APPOINTMENT);
         sideMenuController.SetTab(ManagerAppointmentSideMenu.ADDNEWAPPOINTMENT);
-        paymentField.textProperty().addListener(valueChangeListener);
+        NodeHelper.setTextfieldDigitOnly(paymentField);
         DateTimeFormatter formatter = DataAccess.DefaultTimeFormat;
     }
 
@@ -126,13 +113,11 @@ public class ManagerAppointmentManagePage implements Initializable {
         }
         switch (searchCondition){
             case ID -> {
-                for (char c : value.toCharArray()){
-                    if (!Character.isDigit(c)){
-                        notFoundMessage.setVisible(true);
-                        clearFields();
-                        checkCompleted();
-                        return;
-                    }
+                if (!DataAccess.IsDigit(value)){
+                    notFoundMessage.setVisible(true);
+                    clearFields();
+                    checkCompleted();
+                    return;
                 }
                 customerDescriptor.setCustomerID(Integer.parseInt(value));
             }
@@ -196,20 +181,6 @@ public class ManagerAppointmentManagePage implements Initializable {
         checkCompleted();
     }
 
-    private ChangeListener<String> valueChangeListener =  new ChangeListener<String>() {
-        @Override
-        public void changed(ObservableValue<? extends String> observable, String oldValue,
-                String newValue) {
-            if (!newValue.matches("\\d*")) {
-                paymentField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-            if (paymentField.getText().length() > 14) {
-                String s = paymentField.getText().substring(0, 14);
-                paymentField.setText(s);
-            }
-        }
-    };
-
     private void checkCompleted(){
         if (nameField.getText().trim().length() > 0 && paymentField.getText().trim().length() > 0 && !dueDateErrorMessage.isVisible() && !startDateErrorMessage.isVisible() &&dueDateField.getValue() != null && startDateField.getValue() != null && descriptionField.getText().trim().length() > 0){
             nextButton.setDisable(false);
@@ -231,7 +202,7 @@ public class ManagerAppointmentManagePage implements Initializable {
     @FXML
     private void onNextButtonClick() throws IOException {
         setContent();
-        ManagerTechnicianManagePage controller = (ManagerTechnicianManagePage) Main.SwitchScene("ManagerTechniciansManagePage.fxml");
+        ManagerTechnicianManagePage controller = (ManagerTechnicianManagePage) WindowApp.SetScene("ManagerTechniciansManagePage.fxml");
         controller.LoadAppointment(_appointment, IsUpdateMode);
     }
 

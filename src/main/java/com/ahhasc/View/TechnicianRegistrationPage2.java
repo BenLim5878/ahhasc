@@ -1,22 +1,16 @@
 package com.ahhasc.View;
 
 import com.ahhasc.Config;
-import com.ahhasc.Main;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Technician;
 import com.ahhasc.View.Abstract.AbstractTechnicianRegistrationPage;
 import com.ahhasc.View.Component.ModalControl;
-import com.ahhasc.View.Helper.NodeHelper;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,7 +64,7 @@ public class TechnicianRegistrationPage2 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor.Specialization = DataAccess.Capitalize(specialization).trim();
         this.technicianDescriptor.Description = description.trim();
 
-        TechnicianRegistrationPage3 controller = (TechnicianRegistrationPage3) Main.SwitchScene("TechnicianRegistrationPage3.fxml");
+        TechnicianRegistrationPage3 controller = (TechnicianRegistrationPage3) WindowApp.SetScene("TechnicianRegistrationPage3.fxml");
         controller.InjectTechnicianDetails(this.technicianDescriptor);
         controller.LoadTechnicianDetails();
     }
@@ -83,7 +77,7 @@ public class TechnicianRegistrationPage2 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor.Specialization = specialization;
         this.technicianDescriptor.Description = description;
 
-       TechnicianRegistrationPage1 controller = (TechnicianRegistrationPage1) Main.SwitchScene("TechnicianRegistrationPage1.fxml");
+       TechnicianRegistrationPage1 controller = (TechnicianRegistrationPage1) WindowApp.SetScene("TechnicianRegistrationPage1.fxml");
        controller.InjectTechnicianDetails(this.technicianDescriptor);
        controller.LoadTechnicianDetails();
     }

@@ -1,7 +1,6 @@
 package com.ahhasc.View;
 
 import com.ahhasc.Config;
-import com.ahhasc.Main;
 import com.ahhasc.Model.AuthenticatedResult;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.RegistrationResult;
@@ -9,8 +8,7 @@ import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.AbstractModalWindow;
 import com.ahhasc.View.Component.ModalControl;
 import com.ahhasc.View.Helper.NodeHelper;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -30,9 +28,9 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button loginBtn;
+    private Button loginBtn, passwordModifier;
     @FXML
-    private ImageView loginIcon;
+    private ImageView loginIcon,passwordModifierIcon;
     @FXML
     private Text appname;
     @FXML
@@ -91,7 +89,7 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
 
     @FXML
     private void onRegisterTechnicianClicked() throws IOException {
-        Main.SwitchScene("TechnicianRegistrationPage1.fxml");
+        WindowApp.SetScene("TechnicianRegistrationPage1.fxml");
     }
 
     public void processRegistrationResult(RegistrationResult res){
@@ -104,4 +102,21 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
         message.setText(res.Message);
     }
 
+
+    private String _password;
+
+    @FXML
+    private void onPasswordModifierClicked(){
+        _password =  passwordField.getText();
+        passwordField.clear();
+        passwordField.setPromptText(_password);
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/showpasswordicon.png")));
+    }
+
+    @FXML
+    private void onPasswordModifierReleased(){
+        passwordField.setText(_password);
+        passwordField.setPromptText("Password");
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/hidepasswordicon.png")));
+    }
 }

@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 public class MenuLayout implements Initializable, IMenu {
     @FXML
-    private Button menuButton, appointmentButton, customerButton, administrationButton;
+    private Button menuButton, appointmentButton, customerButton;
     @FXML
     private AnchorPane layout;
     @FXML
@@ -20,7 +20,6 @@ public class MenuLayout implements Initializable, IMenu {
     public static final String MENU = "Menu";
     public static final String APPOINTMENT = "Appointment";
     public static final String CUSTOMER = "Customer";
-    public static final String ADMINISTRATION = "Administration";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,25 +32,16 @@ public class MenuLayout implements Initializable, IMenu {
                 StyleTab(menuButton, true);
                 StyleTab(appointmentButton, false);
                 StyleTab(customerButton, false);
-                StyleTab(administrationButton, false);
                 break;
             case APPOINTMENT:
                 StyleTab(menuButton, false);
                 StyleTab(appointmentButton, true);
                 StyleTab(customerButton, false);
-                StyleTab(administrationButton, false);
                 break;
             case CUSTOMER:
                 StyleTab(menuButton, false);
                 StyleTab(appointmentButton, false);
                 StyleTab(customerButton, true);
-                StyleTab(administrationButton, false);
-                break;
-            case ADMINISTRATION:
-                StyleTab(menuButton, false);
-                StyleTab(appointmentButton, false);
-                StyleTab(customerButton, false);
-                StyleTab(administrationButton, true);
                 break;
         }
     }

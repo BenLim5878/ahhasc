@@ -31,7 +31,7 @@ public class User {
         this.EmailAddress = emailAddress;
     }
 
-    public int getID(){
+    public Integer getID(){
         return this.ID;
     }
     public void setID(int ID){

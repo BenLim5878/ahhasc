@@ -17,3 +17,9 @@
 .combobox .arrow-button:hover{
     -fx-cursor: hand;
 }
+
+.combobox .list-cell:selected .text{
+    -fx-font-family: "Nunito";
+    -fx-font-size: 14.2;
+    -fx-text-fill: #656565;
+}

@@ -1,7 +1,7 @@
 package com.ahhasc.View.Component;
 
-import com.ahhasc.Main;
 import com.ahhasc.ResourceLoader;
+import com.ahhasc.WindowApp;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -37,12 +37,12 @@ public class ModalControl implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modalControls.setOnMousePressed(event -> {
-            xOffset = Main.GetStage().getX() - event.getScreenX();
-            yOffset = Main.GetStage().getY() - event.getScreenY();
+            xOffset = WindowApp.GetStage().getX() - event.getScreenX();
+            yOffset = WindowApp.GetStage().getY() - event.getScreenY();
         });
         modalControls.setOnMouseDragged(event -> {
-            Main.GetStage().setX(event.getScreenX() + xOffset);
-            Main.GetStage().setY(event.getScreenY() + yOffset);
+            WindowApp.GetStage().setX(event.getScreenX() + xOffset);
+            WindowApp.GetStage().setY(event.getScreenY() + yOffset);
         });
     }
 
@@ -84,7 +84,6 @@ public class ModalControl implements Initializable {
     @FXML
     private void closeWindow(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        // do what you have to do
         stage.close();
         Platform.exit();
         System.exit(0);

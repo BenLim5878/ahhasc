@@ -25,7 +25,7 @@
                <children>
                   <AnchorPane pickOnBounds="false" prefHeight="200.0" prefWidth="992.0">
                      <children>
-                        <Button layoutX="-7.0" layoutY="118.0" mnemonicParsing="false" prefHeight="147.97" prefWidth="308.0" style="-fx-background-color: transparent;">
+                        <Button layoutX="-7.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#toAddAppointment" prefHeight="147.97" prefWidth="308.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox prefWidth="582.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
                                  <children>
@@ -76,7 +76,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button layoutX="518.0" layoutY="118.0" mnemonicParsing="false" prefHeight="147.97" prefWidth="473.03" style="-fx-background-color: transparent;">
+                        <Button layoutX="518.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#toRegisterCustomer" prefHeight="147.97" prefWidth="473.03" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox style="-fx-background-color: white; -fx-background-radius: 7.67;">
                                  <children>

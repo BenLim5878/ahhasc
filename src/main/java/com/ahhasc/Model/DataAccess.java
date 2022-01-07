@@ -70,4 +70,23 @@ public class DataAccess {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+    public static boolean IsDigit(String text){
+        boolean out = true;
+        for (char c : text.toCharArray()){
+            if (!Character.isDigit(c)){
+                out = false;
+            }
+        }
+        return out;
+    }
+
+    public static boolean IsValidTelephoneNumber(String telephoneNumber){
+        String target = telephoneNumber.trim();
+        if (target.length() >= 8 && target.length() <= 15){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

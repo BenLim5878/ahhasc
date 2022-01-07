@@ -1,10 +1,9 @@
 package com.ahhasc.View.Component;
 
-import com.ahhasc.Main;
 import com.ahhasc.Model.Appointment;
-import com.ahhasc.Model.DataAccess;
 import com.ahhasc.View.Abstract.IMenu;
 import com.ahhasc.View.ManagerAppointmentManagePage;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -79,7 +78,7 @@ public class ManagerAppointmentSideMenu implements IMenu {
 
     @FXML
     private void addNewAppointmentClicked() throws IOException {
-        Main.SwitchScene("ManagerAppointmentManagePage.fxml");
+        WindowApp.SetScene("ManagerAppointmentManagePage.fxml");
     }
 
     @FXML
@@ -89,7 +88,7 @@ public class ManagerAppointmentSideMenu implements IMenu {
 
     @FXML
     private void updateExistingAppointmentClicked() throws IOException {
-        ManagerAppointmentManagePage controller = (ManagerAppointmentManagePage) Main.SwitchScene("ManagerAppointmentManagePage.fxml");
+        ManagerAppointmentManagePage controller = (ManagerAppointmentManagePage) WindowApp.SetScene("ManagerAppointmentManagePage.fxml");
         controller.LoadAppointment(_appointment);
     }
 }
