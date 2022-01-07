@@ -5,22 +5,16 @@ import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Component.ManagerAppointmentSideMenu;
 import com.ahhasc.View.Component.MenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -143,7 +137,7 @@ public class ManagerTechnicianManagePage implements Initializable {
         text.setStyle("-fx-text-fill: white;-fx-padding: 0 0 0 0");
         text.setPrefWidth(180);
 
-        ImageView imageView = new ImageView(new Image(ResourceLoader.LoadResource("/material/deleteIcon.png")));
+        ImageView imageView = new ImageView(new Image(ResourceLoader.LoadResourceAsStream("/material/deleteIcon.png")));
         imageView.setFitWidth(17.5);
         imageView.setFitHeight(17.5);
 

@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="690.0" prefWidth="1104.0" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.ManagerAppointmentAddNewPage">
+<VBox prefHeight="690.0" prefWidth="1104.0" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.ManagerViewPage">
    <children>
       <fx:include source="Component/ModalControl.fxml" />
       <VBox prefHeight="656.0" prefWidth="1104.0">

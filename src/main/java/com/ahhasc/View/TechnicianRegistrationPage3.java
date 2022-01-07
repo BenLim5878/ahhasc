@@ -108,13 +108,13 @@ public class TechnicianRegistrationPage3 extends AbstractTechnicianRegistrationP
         _password =  passwordField.getText();
         passwordField.clear();
         passwordField.setPromptText(_password);
-        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/showpasswordicon.png")));
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/showpasswordicon.png")));
     }
 
     @FXML
     private void onPasswordModifierReleased(){
         passwordField.setText(_password);
         passwordField.setPromptText("");
-        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/hidepasswordicon.png")));
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/hidepasswordicon.png")));
     }
 }

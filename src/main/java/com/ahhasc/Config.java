@@ -11,4 +11,5 @@ public class Config {
     public static final String Appname = "Pixaservice";
 
     public static final ObservableList<String> RoleList = FXCollections.observableList(new ArrayList<String>(List.of("Lighting technician","Lineworker","Mechanic","Electronic")));
+    public static final boolean IsDebug = true;
 }

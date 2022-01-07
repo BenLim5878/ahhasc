@@ -1,8 +1,12 @@
 package com.ahhasc.Model;
 
+import com.ahhasc.Config;
 import com.ahhasc.ResourceLoader;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,17 +17,22 @@ public class Repository {
 
     public Repository(String filepath, String filename){
         this.Filename = filename;
-        this.Filepath =  ResourceLoader.LoadURL(String.format("/%1$s/%2$s",filepath,this.Filename)).getPath();
+        this.Filepath =  String.format("/%1$s/%2$s",filepath,this.Filename);
     }
 
     public Repository(String filename){
         this.Filename = filename;
-        this.Filepath = ResourceLoader.LoadURL(String.format("/store/%1$s",this.Filename)).getPath();
+        this.Filepath = String.format("/store/%1$s",this.Filename);
     }
 
     public void Load(){
         try{
-            File dataFile = new File(this.Filepath);
+            File dataFile;
+            if (Config.IsDebug){
+                dataFile = new File(ResourceLoader.LoadURL(this.Filepath).getPath());
+            } else {
+                dataFile = new File(this.Filename);
+            }
             this.CheckFileExist(dataFile);
             Scanner dataReader = new Scanner(dataFile);
             while(dataReader.hasNextLine()){
@@ -74,11 +83,20 @@ public class Repository {
     }
 
     private void UpdateContent(ArrayList<String> content){
-        CheckFileExist(new File(this.Filepath));
+        if (Config.IsDebug){
+            CheckFileExist(new File(ResourceLoader.LoadURL(this.Filepath).getPath()));
+        } else {
+            CheckFileExist(new File(this.Filename));
+        }
         this.ClearContent();
         int i = 0;
         try {
-            FileWriter targetFile = new FileWriter(this.Filepath,true);
+            FileWriter targetFile;
+            if (Config.IsDebug){
+                targetFile = new FileWriter(ResourceLoader.LoadURL(this.Filepath).getPath(),true);
+            } else {
+                targetFile = new FileWriter(this.Filename,true);
+            }
             for (String record:content){
                 targetFile.append(record);
                 if (i < (content.size()-1)){
@@ -93,8 +111,18 @@ public class Repository {
     }
 
     private void ClearContent(){
+        if (Config.IsDebug){
+            CheckFileExist(new File(ResourceLoader.LoadURL(this.Filepath).getPath()));
+        } else {
+            CheckFileExist(new File(this.Filename));
+        }
         try {
-            FileWriter targetFile = new FileWriter(this.Filepath,false);
+            FileWriter targetFile;
+            if (Config.IsDebug){
+                targetFile = new FileWriter(ResourceLoader.LoadURL(this.Filepath).getPath(),false);
+            } else {
+                targetFile = new FileWriter(this.Filename);
+            }
             targetFile.write("");
         } catch (IOException ex){
             ex.printStackTrace();

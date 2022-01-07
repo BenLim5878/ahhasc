@@ -2,16 +2,12 @@ package com.ahhasc.View.Component;
 
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.WindowApp;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -55,12 +51,12 @@ public class ModalControl implements Initializable {
     public void changeTheme (String theme){
         switch (theme){
             case Light:
-                closeButtonIcon.setImage(new Image(ResourceLoader.LoadResource("/material/windowcloselight.png")));
-                minimizeButtonIcon.setImage(new Image(ResourceLoader.LoadResource("/material/windowminimizelight.png")));
+                closeButtonIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/windowcloselight.png")));
+                minimizeButtonIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/windowminimizelight.png")));
                 break;
             case Dark:
-                closeButtonIcon.setImage(new Image(ResourceLoader.LoadResource("/material/windowclosedark.png")));
-                minimizeButtonIcon.setImage(new Image(ResourceLoader.LoadResource("/material/windowminimizedark.png")));
+                closeButtonIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/windowclosedark.png")));
+                minimizeButtonIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/windowminimizedark.png")));
                 break;
         }
     }

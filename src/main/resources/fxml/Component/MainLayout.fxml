@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -69,15 +70,19 @@
                         <Font name="Nunito Bold" size="16.1" />
                      </font>
                   </Label>
+                  <Pane prefHeight="61.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
                   <Text fx:id="roleText" fill="#777777" strokeType="OUTSIDE" strokeWidth="0.0" text="Technician" wrappingWidth="67.60000038146973">
                      <font>
                         <Font name="Nunito Regular" size="13.8" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets top="4.0" />
                      </HBox.margin>
                   </Text>
                </children>
+               <padding>
+                  <Insets left="20.0" right="13.0" />
+               </padding>
             </HBox>
             <VBox pickOnBounds="false" prefHeight="128.0" prefWidth="192.0">
                <padding>

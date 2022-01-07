@@ -93,21 +93,21 @@ public class AccountProfileUpdatePage implements Initializable {
         _currentPassword =  currentPasswordField.getText();
         currentPasswordField.clear();
         currentPasswordField.setPromptText(_currentPassword);
-        currentPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/showpasswordicon.png")));
+        currentPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/showpasswordicon.png")));
     }
 
     @FXML
     private void onCurrentPasswordModifierReleased() {
         currentPasswordField.setText(_currentPassword);
         currentPasswordField.setPromptText("");
-        currentPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/hidepasswordicon.png")));
+        currentPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/hidepasswordicon.png")));
     }
 
     @FXML
     private void onNewCurrentPasswordModifierReleased() {
         newPasswordField.setText(_newPassword);
         newPasswordField.setPromptText("");
-        newPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/hidepasswordicon.png")));
+        newPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/hidepasswordicon.png")));
     }
 
     @FXML
@@ -115,7 +115,7 @@ public class AccountProfileUpdatePage implements Initializable {
         _newPassword =  newPasswordField.getText();
         newPasswordField.clear();
         newPasswordField.setPromptText(_newPassword);
-        newPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/showpasswordicon.png")));
+        newPasswordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/showpasswordicon.png")));
     }
 
     @FXML
@@ -133,7 +133,7 @@ public class AccountProfileUpdatePage implements Initializable {
 
         DataAccess.GetInstance().UserController.UpdateUser(Session.GetInstance().LoggedUser);
         loadPersonalDetail();
-        mainLayoutController.injectUser();
+        mainLayoutController.updateUserInformation();
     }
 
     @FXML

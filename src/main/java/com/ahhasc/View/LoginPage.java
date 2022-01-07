@@ -60,12 +60,12 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
 
     @FXML
     private void onLoginBtnHovered(){
-        loginIcon.setImage(new Image(ResourceLoader.LoadResource("/material/nextbtnfilledimg.png")));
+        loginIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/nextbtnfilledimg.png")));
     }
 
     @FXML
     private void onLoginBtnExit(){
-        loginIcon.setImage(new Image(ResourceLoader.LoadResource("/material/nextbtnimg.png")));
+        loginIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/nextbtnimg.png")));
     }
 
     @FXML
@@ -75,7 +75,7 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
         Boolean isUserSaved = staySignInCheckbox.isSelected();
         AuthenticatedResult authResult =  DataAccess.GetInstance().UserController.Authenticate(email.trim().toLowerCase(),password,isUserSaved);
         if (authResult.IsSuccessful){
-            loginIcon.setImage(new Image(ResourceLoader.LoadResource("/material/nextbtnsuccessimg.png")));
+            loginIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/nextbtnsuccessimg.png")));
             loginBtn.setOnMouseEntered(null);
             loginBtn.setOnMouseExited(null);
         } else {
@@ -110,13 +110,13 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
         _password =  passwordField.getText();
         passwordField.clear();
         passwordField.setPromptText(_password);
-        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/showpasswordicon.png")));
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/showpasswordicon.png")));
     }
 
     @FXML
     private void onPasswordModifierReleased(){
         passwordField.setText(_password);
         passwordField.setPromptText("Password");
-        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResource("/material/hidepasswordicon.png")));
+        passwordModifierIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/hidepasswordicon.png")));
     }
 }
