@@ -29,12 +29,24 @@
 }
 
 .main-container{
-    -fx-background-color:  #F2F8F6;
+    -fx-background-color:  #FDFDFD;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
 }
 
 .util-button:hover{
     -fx-background-color: #CBDFC8 !important;
+}
+
+.menu-button:hover{
+    -fx-background-color: white !important;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1),10.0 ,0.5, 1.0, 1.0);
+}
+
+.pane-button:hover{
+    -fx-background-color: #ecf1ec !important;
+}
+.top-menu-button:hover{
+    -fx-background-color: #e8e8e8 !important;
 }
 

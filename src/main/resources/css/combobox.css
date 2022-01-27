@@ -7,7 +7,7 @@
 
 .combobox{
     -fx-background-color: #E0F3DD ;
-    -fx-background-radius: 12;
+    -fx-background-radius: 6.7;
 }
 
 .combobox .arrow-button{
@@ -18,7 +18,7 @@
     -fx-cursor: hand;
 }
 
-.combobox .list-cell:selected .text{
+.combobox .list-cell .text{
     -fx-font-family: "Nunito";
     -fx-font-size: 14.2;
     -fx-text-fill: #656565;

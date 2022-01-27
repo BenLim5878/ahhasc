@@ -27,7 +27,7 @@
                      <children>
                         <Button layoutX="-7.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#toAddAppointment" prefHeight="147.97" prefWidth="308.0" style="-fx-background-color: transparent;">
                            <graphic>
-                              <HBox prefWidth="582.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
+                              <HBox prefWidth="582.0" style="-fx-background-color: white; -fx-background-radius: 7.67;" styleClass="pane-button">
                                  <children>
                                     <VBox prefWidth="308.0">
                                        <children>
@@ -78,7 +78,7 @@
                         </Button>
                         <Button layoutX="518.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#toRegisterCustomer" prefHeight="147.97" prefWidth="473.03" style="-fx-background-color: transparent;">
                            <graphic>
-                              <HBox style="-fx-background-color: white; -fx-background-radius: 7.67;">
+                              <HBox style="-fx-background-color: white; -fx-background-radius: 7.67;" styleClass="pane-button">
                                  <children>
                                     <VBox prefWidth="308.0">
                                        <children>
@@ -161,5 +161,6 @@
    </children>
    <stylesheets>
       <URL value="@../css/table.css" />
+      <URL value="@../css/main.css" />
    </stylesheets>
 </VBox>

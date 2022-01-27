@@ -4,11 +4,11 @@
 }
 
 .tableview .column-header-background {
-    -fx-background-color: white;
+    -fx-background-color: transparent;
 }
 
 .tableview .column-header-background .filler {
-    -fx-background-color: white;
+    -fx-background-color: transparent;
 }
 
 .tableview .placeholder {
@@ -20,13 +20,16 @@
 
 .tableview .table-column{
     -fx-background-radius: 15 15 0 0;
-    -fx-background-color: white;
+    -fx-background-color: transparent;
     -fx-font-family: Nunito;
     -fx-font-size: 15;
     -fx-pref-height:50;
-    -fx-border-color: #c4c4c4;
-    -fx-border-width: 0 0 1.5 0;
     -fx-alignment: CENTER;
+}
+
+.tableview .column-header-background{
+    -fx-border-color: #c4c4c4;
+    -fx-border-width: 0 0 1.2 0;
 }
 
 .tableview .table-column .label{
@@ -43,6 +46,10 @@
 }
 .tableview .table-row-cell:odd:filled:selected {
     -fx-background: -fx-control-inner-background-alt ;
+}
+
+.tableview .table-row-cell{
+    -fx-background-color: transparent;
 }
 
 .tableview .scroll-bar{

@@ -34,7 +34,7 @@ public class TechnicianRegistrationPage1 extends AbstractTechnicianRegistrationP
         this.technicianDescriptor = new Technician();
         NodeHelper.RemoveTextFieldFocus(nameField,mainContent);
         modalControlController.changeTheme(ModalControl.Light);
-        NodeHelper.setTextfieldDigitOnly(telephoneNumberField);
+        NodeHelper.SetTextfieldDigitOnly(telephoneNumberField);
     }
 
     @Override

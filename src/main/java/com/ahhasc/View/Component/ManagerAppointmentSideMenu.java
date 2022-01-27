@@ -1,5 +1,6 @@
 package com.ahhasc.View.Component;
 
+import com.ahhasc.Main;
 import com.ahhasc.Model.Appointment;
 import com.ahhasc.View.Abstract.IMenu;
 import com.ahhasc.View.ManagerAppointmentManagePage;
@@ -72,8 +73,8 @@ public class ManagerAppointmentSideMenu implements IMenu {
     }
 
     @FXML
-    private void viewAllClicked(){
-
+    private void viewAllClicked() throws IOException {
+        WindowApp.SetScene("ManagerAppointmentViewAllPage.fxml");
     }
 
     @FXML

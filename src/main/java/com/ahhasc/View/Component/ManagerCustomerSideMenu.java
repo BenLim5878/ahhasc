@@ -69,12 +69,13 @@ public class ManagerCustomerSideMenu implements IMenu {
     }
 
     @FXML
-    private void viewAllClicked(){
-
+    private void viewAllClicked() throws IOException {
+        WindowApp.SetScene("ManagerCustomerViewAllPage.fxml");
     }
 
     @FXML
     private void addCustomerClicked() throws IOException {
+        WindowApp.SetScene("ManagerCustomerManagePage.fxml");
     }
 
     @FXML

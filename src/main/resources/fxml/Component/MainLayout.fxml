@@ -86,32 +86,44 @@
             </HBox>
             <VBox pickOnBounds="false" prefHeight="128.0" prefWidth="192.0">
                <padding>
-                  <Insets bottom="16.1" left="16.87" right="16.87" top="12.27" />
+                  <Insets bottom="16.1" top="12.27" />
                </padding>
                <children>
-                  <Button fx:id="userProfileButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#toAccountUpdatePage" prefHeight="29.13" prefWidth="157.93" style="-fx-background-color: transparent; -fx-background-radius: 3;" text="Profile" textFill="#4c4c4c">
+                  <Button fx:id="userProfileButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#toAccountUpdatePage" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-radius: 3;" styleClass="menu-button" text="Profile" textFill="#4c4c4c">
                      <font>
                         <Font name="Nunito Bold" size="16.1" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="4.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="signOutButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#signOut" prefHeight="29.13" prefWidth="157.93" style="-fx-background-color: transparent; -fx-background-radius: 3;" text="Sign Out" textFill="#4c4c4c">
+                  <Button fx:id="signOutButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#signOut" prefHeight="34.0" prefWidth="201.0" style="-fx-background-color: transparent; -fx-background-radius: 3;" styleClass="menu-button" text="Sign Out" textFill="#4c4c4c">
                      <font>
                         <Font name="Nunito Bold" size="16.1" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="4.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </Button>
-                  <Button fx:id="exitButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="29.13" prefWidth="157.93" style="-fx-background-color: transparent; -fx-background-radius: 3;" text="Exit" textFill="#4c4c4c">
+                  <Button fx:id="exitButton" alignment="TOP_LEFT" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="34.0" prefWidth="196.0" style="-fx-background-color: transparent; -fx-background-radius: 3;" styleClass="menu-button" text="Exit" textFill="#4c4c4c">
                      <font>
                         <Font name="Nunito Bold" size="16.1" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="4.0" />
+                     </padding>
                   </Button>
                </children>
             </VBox>

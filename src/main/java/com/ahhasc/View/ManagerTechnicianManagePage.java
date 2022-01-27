@@ -3,7 +3,7 @@ package com.ahhasc.View;
 import com.ahhasc.Model.*;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Component.ManagerAppointmentSideMenu;
-import com.ahhasc.View.Component.MenuLayout;
+import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,7 +35,7 @@ public class ManagerTechnicianManagePage implements Initializable {
     @FXML
     private ManagerAppointmentSideMenu sideMenuController;
     @FXML
-    private MenuLayout menuLayoutController;
+    private ManagerMenuLayout menuLayoutController;
     @FXML
     private Button completeButton, cancelButton;
 
@@ -49,7 +49,7 @@ public class ManagerTechnicianManagePage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sideMenuController.SetTab(ManagerAppointmentSideMenu.ASSIGNTECHNICIANS);
         technicians = DataAccess.GetInstance().UserController.GetTechnicians();
-        menuLayoutController.SetTab(MenuLayout.APPOINTMENT);
+        menuLayoutController.SetTab(ManagerMenuLayout.APPOINTMENT);
         loadTechnicansDetailsPane();
     }
 
@@ -98,7 +98,7 @@ public class ManagerTechnicianManagePage implements Initializable {
     private VBox createTechnicianDetailsPane(Technician technicianDetails){
         // VBox
         VBox technicianPane = new VBox();
-        NodeHelper.setDropShadow(technicianPane, 0 ,2);
+        NodeHelper.SetDropShadow(technicianPane, 0 ,2);
         technicianPane.setPadding(new Insets(14,10,19,9));
         technicianPane.setStyle("-fx-background-color: #E0E7E0;-fx-background-radius: 11.5");
         technicianPane.setCursor(Cursor.HAND);

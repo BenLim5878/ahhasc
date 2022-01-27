@@ -44,7 +44,7 @@ public class AccountProfileUpdatePage implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadPersonalDetail();
-        NodeHelper.setTextfieldDigitOnly(telephoneNumberField);
+        NodeHelper.SetTextfieldDigitOnly(telephoneNumberField);
     }
 
     private void loadPersonalDetail(){

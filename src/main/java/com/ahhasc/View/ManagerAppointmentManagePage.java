@@ -1,8 +1,9 @@
 package com.ahhasc.View;
 
+import com.ahhasc.Config;
 import com.ahhasc.Model.*;
 import com.ahhasc.View.Component.ManagerAppointmentSideMenu;
-import com.ahhasc.View.Component.MenuLayout;
+import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import com.ahhasc.WindowApp;
 import javafx.event.Event;
@@ -15,6 +16,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,7 +24,7 @@ import java.util.ResourceBundle;
 public class ManagerAppointmentManagePage implements Initializable {
 
     @FXML
-    private MenuLayout menuLayoutController;
+    private ManagerMenuLayout menuLayoutController;
     @FXML
     private ManagerAppointmentSideMenu sideMenuController;
     @FXML
@@ -37,6 +39,10 @@ public class ManagerAppointmentManagePage implements Initializable {
     private Button searchTypeButton, nextButton, saveButton;
     @FXML
     private Text notFoundMessage,dueDateErrorMessage,startDateErrorMessage;
+    @FXML
+    private ComboBox<Integer> hourComboBox;
+    @FXML
+    private ComboBox<String> minuteComboBox, timeTypeComboBox;
 
     private String searchCondition = ID;
 
@@ -50,12 +56,21 @@ public class ManagerAppointmentManagePage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuLayoutController.SetTab(MenuLayout.APPOINTMENT);
+        menuLayoutController.SetTab(ManagerMenuLayout.APPOINTMENT);
         sideMenuController.SetTab(ManagerAppointmentSideMenu.ADDNEWAPPOINTMENT);
-        NodeHelper.setTextfieldDigitOnly(paymentField);
+        NodeHelper.SetTextfieldDigitOnly(paymentField);
         DateTimeFormatter formatter = DataAccess.DefaultTimeFormat;
+        hourComboBox.setItems(Config.HourChoices);
+        minuteComboBox.setItems(Config.MinuteChoices);
+        timeTypeComboBox.setItems(Config.TimeTypeChoices);
+        loadDefaultTime();
     }
 
+    private void loadDefaultTime(){
+        hourComboBox.valueProperty().set(12);
+        minuteComboBox.valueProperty().set("00");
+        timeTypeComboBox.valueProperty().set("PM");
+    }
 
     public void LoadAppointment(Appointment appointment){
         _appointment = appointment;
@@ -73,6 +88,9 @@ public class ManagerAppointmentManagePage implements Initializable {
         paymentField.setText(amount.toString());
         dueDateField.setValue(appointment.Payment.DueDate);
         startDateField.setValue(appointment.StartTime.toLocalDate());
+        hourComboBox.setValue(Integer.parseInt(NodeHelper.ProcessTime(appointment.StartTime)[0]));
+        minuteComboBox.setValue(NodeHelper.ProcessTime(appointment.StartTime)[1]);
+        timeTypeComboBox.setValue(NodeHelper.ProcessTime(appointment.StartTime)[2]);
         descriptionField.setText(appointment.Description);
 
         nextButton.setDisable(false);
@@ -181,6 +199,11 @@ public class ManagerAppointmentManagePage implements Initializable {
         checkCompleted();
     }
 
+    @FXML
+    private void comboBoxSelect(){
+        checkCompleted();
+    }
+
     private void checkCompleted(){
         if (nameField.getText().trim().length() > 0 && paymentField.getText().trim().length() > 0 && !dueDateErrorMessage.isVisible() && !startDateErrorMessage.isVisible() &&dueDateField.getValue() != null && startDateField.getValue() != null && descriptionField.getText().trim().length() > 0){
             nextButton.setDisable(false);
@@ -211,7 +234,7 @@ public class ManagerAppointmentManagePage implements Initializable {
             _appointment = new Appointment();
         }
         _appointment.BookingCustomer = _selectedCustomer;
-        _appointment.StartTime = startDateField.getValue().atStartOfDay();
+        _appointment.StartTime = LocalDateTime.of(startDateField.getValue(),DataAccess.ParseTime(hourComboBox.getValue(),Integer.parseInt(minuteComboBox.getValue()),timeTypeComboBox.getValue()));
         _appointment.Description = descriptionField.getText().trim();
 
         if (IsUpdateMode){

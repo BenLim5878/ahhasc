@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AbstractTechnicianRegistrationPage extends AbstractModalWindow {
+public abstract class AbstractTechnicianRegistrationPage extends AbstractModalWindow {
 
     @FXML
     protected Button nextBtn;

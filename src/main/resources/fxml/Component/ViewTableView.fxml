@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+
+<TableView fx:id="dataTable" prefHeight="417.0" prefWidth="797.0" style="-fx-background-radius: 7.67;" styleClass="tableview" stylesheets="@../../css/table.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.ViewTableView">
+   <columnResizePolicy>
+      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+   </columnResizePolicy>
+   <effect>
+      <DropShadow offsetY="2.9">
+         <color>
+            <Color opacity="0.25" />
+         </color>
+      </DropShadow>
+   </effect>
+</TableView>

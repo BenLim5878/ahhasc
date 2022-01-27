@@ -2,7 +2,7 @@ package com.ahhasc.View;
 
 import com.ahhasc.Model.AuthenticatedResult;
 import com.ahhasc.Model.DataAccess;
-import com.ahhasc.View.Component.MenuLayout;
+import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.ViewModel.ViewAuthenticateResult;
 import com.ahhasc.WindowApp;
 import javafx.collections.FXCollections;
@@ -26,7 +26,7 @@ public class ManagerMenuPage implements Initializable {
     private TableColumn timeAuthenticatedColumn, userIDColumn, successfulColumn, errorMessageColumn;
 
     @FXML
-    private MenuLayout menuLayoutController;
+    private ManagerMenuLayout menuLayoutController;
 
 
     @Override
@@ -39,7 +39,7 @@ public class ManagerMenuPage implements Initializable {
         ArrayList<ViewAuthenticateResult> logsView = new ArrayList<ViewAuthenticateResult>();
         logs.forEach(log -> logsView.add(new ViewAuthenticateResult(log)));
         authLoggerTable.setItems(FXCollections.observableList(FXCollections.observableList(logsView)));
-        menuLayoutController.SetTab(MenuLayout.MENU);
+        menuLayoutController.SetTab(ManagerMenuLayout.MENU);
     }
 
     @FXML

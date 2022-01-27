@@ -2,10 +2,8 @@ package com.ahhasc.View;
 
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Room;
-import com.ahhasc.Model.Technician;
-import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Component.ManagerCustomerSideMenu;
-import com.ahhasc.View.Component.MenuLayout;
+import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,14 +15,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
-import javax.xml.crypto.Data;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -40,26 +35,30 @@ public class ManagerRoomManagePage implements Initializable {
     @FXML
     private ImageView addRoomButtonIcon;
     @FXML
-    private MenuLayout menuLayoutController;
+    private ManagerMenuLayout menuLayoutController;
     @FXML
     private ManagerCustomerSideMenu sideMenuController;
     @FXML
-    private VBox roomForm, listContent;
+    private VBox roomForm, listContent, searchPane, detailPane;
+    @FXML
+    private HBox contentPane;
 
     private ArrayList<Room> rooms = new ArrayList<>();
     private Room selectedRoom;
-
+    private VBox _detailPane;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuLayoutController.SetTab(MenuLayout.CUSTOMER);
+        _detailPane = detailPane;
+        menuLayoutController.SetTab(ManagerMenuLayout.CUSTOMER);
         sideMenuController.SetTab(ManagerCustomerSideMenu.MANAGEROOM);
         rooms = DataAccess.GetInstance().RoomController.GetRooms();
-        NodeHelper.setTextfieldDigitOnly(searchField);
-        NodeHelper.setTextfieldDigitOnly(roomUnitField);
-        NodeHelper.setTextfieldDigitOnly(floorField);
+        NodeHelper.SetTextfieldDigitOnly(searchField);
+        NodeHelper.SetTextfieldDigitOnly(roomUnitField);
+        NodeHelper.SetTextfieldDigitOnly(floorField);
         loadRoomContent();
+        updatePane();
     }
 
     private void loadRoomContent(){
@@ -101,7 +100,7 @@ public class ManagerRoomManagePage implements Initializable {
     private VBox buildRoomPane(Room room, boolean isSelected){
         // VBox
         VBox roomPane = new VBox();
-        NodeHelper.setDropShadow(roomPane, 0 ,2);
+        NodeHelper.SetDropShadow(roomPane, 0 ,2);
         roomPane.setPadding(new Insets(11.5,15,11.5,15));
         if (isSelected){
             roomPane.setStyle("-fx-background-color: #E0F3DD;-fx-background-radius: 11.5");
@@ -128,6 +127,7 @@ public class ManagerRoomManagePage implements Initializable {
                     validateContent();
                     loadRoomContent();
                 }
+                updatePane();
             }
         });
 
@@ -177,6 +177,7 @@ public class ManagerRoomManagePage implements Initializable {
         selectedRoom = new Room();
         loadSelectedRoom();
         loadRoomContent();
+        updatePane();
         validateContent();
     }
 
@@ -219,6 +220,7 @@ public class ManagerRoomManagePage implements Initializable {
         selectedRoom = null;
         loadRoomContent();
         loadSelectedRoom();
+        updatePane();
     }
 
     @FXML
@@ -234,6 +236,22 @@ public class ManagerRoomManagePage implements Initializable {
         else {
             DataAccess.GetInstance().RoomController.AddRoom(selectedRoom);
         }
+        reset();
+    }
+
+    private void updatePane(){
+        contentPane.getChildren().remove(detailPane);
+        if (selectedRoom != null){
+            contentPane.getChildren().add(_detailPane);
+            HBox.setMargin(searchPane,new Insets(0,0,0,0));
+        } else {
+            contentPane.getChildren().remove(detailPane);
+            HBox.setMargin(searchPane,new Insets(0,0,0,200));
+        }
+    }
+
+    @FXML
+    private void closeDetailPane(){
         reset();
     }
 }

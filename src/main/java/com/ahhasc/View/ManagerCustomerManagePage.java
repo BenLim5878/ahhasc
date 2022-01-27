@@ -4,7 +4,7 @@ import com.ahhasc.Model.Customer;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Room;
 import com.ahhasc.View.Component.ManagerCustomerSideMenu;
-import com.ahhasc.View.Component.MenuLayout;
+import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import javax.xml.crypto.Data;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,7 +25,7 @@ public class ManagerCustomerManagePage implements Initializable {
     @FXML
     private Button completeButton, cancelButton;
     @FXML
-    private MenuLayout menuLayoutController;
+    private ManagerMenuLayout menuLayoutController;
     @FXML
     private ManagerCustomerSideMenu sideMenuController;
 
@@ -36,10 +35,10 @@ public class ManagerCustomerManagePage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuLayoutController.SetTab(MenuLayout.CUSTOMER);
+        menuLayoutController.SetTab(ManagerMenuLayout.CUSTOMER);
         sideMenuController.SetTab(ManagerCustomerSideMenu.ADDCUSTOMER);
-        NodeHelper.setTextfieldDigitOnly(telephoneNumberField);
-        NodeHelper.setTextfieldDigitOnly(roomUnitField);
+        NodeHelper.SetTextfieldDigitOnly(telephoneNumberField);
+        NodeHelper.SetTextfieldDigitOnly(roomUnitField);
     }
 
     public void LoadCustomer(Customer customer){

@@ -34,14 +34,87 @@
                             <children>
                                 <HBox layoutY="113.0" prefHeight="506.0" prefWidth="992.0">
                                     <children>
-                                        <VBox prefHeight="506.0" prefWidth="351.0">
-                                            <HBox.margin>
-                                                <Insets />
-                                            </HBox.margin>
+                              <HBox fx:id="contentPane" alignment="CENTER" prefHeight="506.0" prefWidth="833.0">
                                  <children>
-                                    <VBox prefHeight="483.0" prefWidth="428.0">
+                                              <VBox fx:id="searchPane" prefHeight="506.0" prefWidth="351.0">
+                                                  <HBox.margin>
+                                                      <Insets />
+                                                  </HBox.margin>
                                        <children>
-                                          <HBox prefHeight="49.84" prefWidth="428.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
+                                          <VBox prefHeight="483.0" prefWidth="428.0">
+                                             <children>
+                                                <HBox prefHeight="49.84" prefWidth="428.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
+                                                   <effect>
+                                                      <DropShadow offsetY="3.07">
+                                                         <color>
+                                                            <Color opacity="0.25" />
+                                                         </color>
+                                                      </DropShadow>
+                                                   </effect>
+                                                   <children>
+                                                      <Pane prefHeight="50.0" prefWidth="74.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: C5C5C5;">
+                                                         <children>
+                                                            <Text fill="#4c4c4c" layoutX="13.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+                                                               <font>
+                                                                  <Font name="Nunito Bold" size="15.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </Pane>
+                                                      <HBox prefHeight="48.0" prefWidth="278.0">
+                                                         <children>
+                                                            <TextField fx:id="searchField" onKeyTyped="#onSearchFieldType" prefHeight="48.0" prefWidth="237.0" promptText="Room Unit" style="-fx-background-color: transparent;">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="14.57" />
+                                                               </font>
+                                                            </TextField>
+                                                            <Button fx:id="addRoomButton" mnemonicParsing="false" onMouseClicked="#onAddRoomClick" prefHeight="50.0" prefWidth="49.0" style="-fx-background-color: transparent;">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                               <graphic>
+                                                                  <ImageView fx:id="addRoomButtonIcon" fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../material/addIcon.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </HBox>
+                                                <VBox fx:id="listContent" alignment="CENTER" prefHeight="417.0" prefWidth="351.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
+                                                   <children>
+                                                      <ScrollPane fx:id="roomListContainer" prefHeight="421.0" prefWidth="303.0" style="-fx-background-color: transparent;" styleClass="scrollpane" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                   <effect>
+                                                      <DropShadow offsetY="3.07">
+                                                         <color>
+                                                            <Color opacity="0.25" />
+                                                         </color>
+                                                      </DropShadow>
+                                                   </effect>
+                                                   <padding>
+                                                      <Insets bottom="26.0" left="24.0" right="24.0" top="26.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                              </VBox>
+                                    <VBox fx:id="detailPane" prefHeight="506.0" prefWidth="253.0">
+                                       <HBox.margin>
+                                          <Insets left="52.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <AnchorPane prefHeight="331.0" prefWidth="253.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
                                              <effect>
                                                 <DropShadow offsetY="3.07">
                                                    <color>
@@ -50,176 +123,120 @@
                                                 </DropShadow>
                                              </effect>
                                              <children>
-                                                <Pane prefHeight="50.0" prefWidth="74.0" style="-fx-border-width: 0 1 0 0; -fx-border-color: C5C5C5;">
+                                                <Button layoutX="212.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#closeDetailPane" style="-fx-background-color: transparent;" styleClass="util-button">
+                                                   <graphic>
+                                                      <ImageView fitHeight="14.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../material/windowclosedark.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <VBox fx:id="roomForm" disable="true" layoutY="33.0" prefHeight="307.0" prefWidth="253.0">
+                                                   <padding>
+                                                      <Insets bottom="17.64" left="23.77" right="32.0" />
+                                                   </padding>
                                                    <children>
-                                                      <Text fill="#4c4c4c" layoutX="13.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+                                                      <Text fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Details">
                                                          <font>
-                                                            <Font name="Nunito Bold" size="15.0" />
+                                                            <Font name="Nunito Bold" size="19.0" />
                                                          </font>
                                                       </Text>
+                                                      <VBox prefHeight="275.0" prefWidth="197.0">
+                                                         <VBox.margin>
+                                                            <Insets top="17.0" />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Unit">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="13.8" />
+                                                               </font>
+                                                            </Text>
+                                                            <TextField fx:id="roomUnitField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="14.2" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="3.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="13.8" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="15.0" />
+                                                               </VBox.margin>
+                                                            </Text>
+                                                            <TextField fx:id="floorField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="14.2" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="3.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Block">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="13.8" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="15.0" />
+                                                               </VBox.margin>
+                                                            </Text>
+                                                            <TextField fx:id="blockField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
+                                                               <font>
+                                                                  <Font name="Nunito Regular" size="14.2" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="3.0" />
+                                                               </VBox.margin>
+                                                            </TextField>
+                                                            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="197.0">
+                                                               <children>
+                                                                  <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#onDeleteButtonClick" prefHeight="37.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Delete" textFill="#c96d6d">
+                                                                     <font>
+                                                                        <Font name="Nunito Bold" size="13.8" />
+                                                                     </font>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                  </Button>
+                                                                  <Button fx:id="updateButton" mnemonicParsing="false" onMouseClicked="#onUpdateButtonClick" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Update" textFill="#40c650">
+                                                                     <font>
+                                                                        <Font name="Nunito Bold" size="13.8" />
+                                                                     </font>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                     <HBox.margin>
+                                                                        <Insets left="65.0" />
+                                                                     </HBox.margin>
+                                                                  </Button>
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets top="25.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
                                                    </children>
-                                                </Pane>
-                                                <HBox prefHeight="48.0" prefWidth="278.0">
-                                                   <children>
-                                                      <TextField fx:id="searchField" onKeyTyped="#onSearchFieldType" prefHeight="48.0" prefWidth="237.0" promptText="Room Unit" style="-fx-background-color: transparent;">
-                                                         <font>
-                                                            <Font name="Nunito Regular" size="14.57" />
-                                                         </font>
-                                                      </TextField>
-                                                      <Button fx:id="addRoomButton" mnemonicParsing="false" onMouseClicked="#onAddRoomClick" prefHeight="50.0" prefWidth="49.0" style="-fx-background-color: transparent;">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <graphic>
-                                                            <ImageView fx:id="addRoomButtonIcon" fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@../material/addIcon.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                         </graphic>
-                                                      </Button>
-                                                   </children>
-                                                </HBox>
+                                                </VBox>
                                              </children>
-                                          </HBox>
-                                          <VBox fx:id="listContent" alignment="CENTER" prefHeight="417.0" prefWidth="351.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
-                                             <children>
-                                                <ScrollPane fx:id="roomListContainer" prefHeight="421.0" prefWidth="303.0" style="-fx-background-color: transparent;" styleClass="scrollpane" />
-                                             </children>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <VBox.margin>
-                                                <Insets top="20.0" />
-                                             </VBox.margin>
-                                             <effect>
-                                                <DropShadow offsetY="3.07">
-                                                   <color>
-                                                      <Color opacity="0.25" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                             <padding>
-                                                <Insets bottom="26.0" left="24.0" right="24.0" top="26.0" />
-                                             </padding>
-                                          </VBox>
+                                          </AnchorPane>
                                        </children>
                                     </VBox>
                                  </children>
-                                        </VBox>
-                              <VBox prefHeight="506.0" prefWidth="253.0">
-                                 <HBox.margin>
-                                    <Insets left="52.0" />
-                                 </HBox.margin>
-                                 <children>
-                                    <VBox fx:id="roomForm" disable="true" prefHeight="342.0" prefWidth="253.0" style="-fx-background-color: white; -fx-background-radius: 7.67;">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="17.64" left="23.77" right="32.0" top="17.64" />
-                                       </padding>
-                                       <effect>
-                                          <DropShadow offsetY="3.07">
-                                             <color>
-                                                <Color opacity="0.25" />
-                                             </color>
-                                          </DropShadow>
-                                       </effect>
-                                       <children>
-                                          <Text fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Details">
-                                             <font>
-                                                <Font name="Nunito Bold" size="19.0" />
-                                             </font>
-                                          </Text>
-                                          <VBox prefHeight="275.0" prefWidth="197.0">
-                                             <VBox.margin>
-                                                <Insets top="17.0" />
-                                             </VBox.margin>
-                                             <children>
-                                                <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Unit">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="13.8" />
-                                                   </font>
-                                                </Text>
-                                                <TextField fx:id="roomUnitField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="14.2" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </VBox.margin>
-                                                </TextField>
-                                                <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="13.8" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="15.0" />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <TextField fx:id="floorField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="14.2" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </VBox.margin>
-                                                </TextField>
-                                                <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Block">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="13.8" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="15.0" />
-                                                   </VBox.margin>
-                                                </Text>
-                                                <TextField fx:id="blockField" onKeyTyped="#onRoomFieldType" prefHeight="35.0" prefWidth="197.0" style="-fx-background-color: E0F3DD; -fx-background-radius: 12;">
-                                                   <font>
-                                                      <Font name="Nunito Regular" size="14.2" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </VBox.margin>
-                                                </TextField>
-                                                <HBox alignment="CENTER" prefHeight="37.0" prefWidth="197.0">
-                                                   <children>
-                                                      <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#onDeleteButtonClick" prefHeight="37.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Delete" textFill="#c96d6d">
-                                                         <font>
-                                                            <Font name="Nunito Bold" size="13.8" />
-                                                         </font>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </Button>
-                                                      <Button fx:id="updateButton" mnemonicParsing="false" onMouseClicked="#onUpdateButtonClick" prefHeight="37.0" prefWidth="67.0" style="-fx-background-color: transparent;" text="Update" textFill="#40c650">
-                                                         <font>
-                                                            <Font name="Nunito Bold" size="13.8" />
-                                                         </font>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <HBox.margin>
-                                                            <Insets left="65.0" />
-                                                         </HBox.margin>
-                                                      </Button>
-                                                   </children>
-                                                   <VBox.margin>
-                                                      <Insets top="25.0" />
-                                                   </VBox.margin>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </VBox>
+                              </HBox>
                                         <VBox prefHeight="443.0" prefWidth="157.93">
                                             <children>
                                                 <fx:include fx:id="sideMenu" source="Component/ManagerCustomerMenu.fxml" />
                                             </children>
                                             <HBox.margin>
-                                                <Insets left="177.0" />
+                                                <Insets />
                                             </HBox.margin>
                                         </VBox>
                                     </children>

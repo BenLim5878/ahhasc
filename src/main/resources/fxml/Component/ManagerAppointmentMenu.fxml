@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="247.0" prefWidth="158.0" style="-fx-background-color: white; -fx-background-radius: 7.67;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.ManagerAppointmentSideMenu">
+<VBox alignment="TOP_CENTER" prefHeight="247.0" prefWidth="158.0" style="-fx-background-color: white; -fx-background-radius: 7.67;" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.ManagerAppointmentSideMenu">
    <effect>
       <DropShadow offsetY="3.07">
          <color>
@@ -17,7 +17,7 @@
       </DropShadow>
    </effect>
    <children>
-      <Button fx:id="viewAllButton" mnemonicParsing="false" onMouseClicked="#viewAllClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" text="View all" textFill="#5d5d5d">
+      <Button fx:id="viewAllButton" mnemonicParsing="false" onMouseClicked="#viewAllClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="menu-button" text="View all" textFill="#5d5d5d">
          <font>
             <Font name="Nunito Bold" size="14.57" />
          </font>
@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="addNewAppointmentButton" mnemonicParsing="false" onMouseClicked="#addNewAppointmentClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" text="Add New Appointment" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
+      <Button fx:id="addNewAppointmentButton" mnemonicParsing="false" onMouseClicked="#addNewAppointmentClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="menu-button" text="Add New Appointment" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
          <font>
             <Font name="Nunito Bold" size="14.57" />
          </font>
@@ -39,7 +39,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="assignTechniciansButton" disable="true" mnemonicParsing="false" onMouseClicked="#assignTechnicianClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" text="Assign technicians" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
+      <Button fx:id="assignTechniciansButton" disable="true" mnemonicParsing="false" onMouseClicked="#assignTechnicianClicked" prefHeight="53.0" prefWidth="160.0" style="-fx-background-color: transparent;" styleClass="menu-button" text="Assign technicians" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
          <font>
             <Font name="Nunito Bold" size="14.57" />
          </font>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="updateExistingAppointmentButton" disable="true" mnemonicParsing="false" onMouseClicked="#updateExistingAppointmentClicked" prefHeight="79.0" prefWidth="171.0" style="-fx-background-color: transparent;" text="Update existing appointment" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
+      <Button fx:id="updateExistingAppointmentButton" disable="true" mnemonicParsing="false" onMouseClicked="#updateExistingAppointmentClicked" prefHeight="79.0" prefWidth="171.0" style="-fx-background-color: transparent;" styleClass="menu-button" text="Update existing appointment" textAlignment="CENTER" textFill="#5d5d5d" wrapText="true">
          <font>
             <Font name="Nunito Bold" size="14.57" />
          </font>

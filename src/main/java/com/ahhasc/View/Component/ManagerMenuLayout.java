@@ -1,15 +1,17 @@
 package com.ahhasc.View.Component;
 
 import com.ahhasc.View.Abstract.IMenu;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuLayout implements Initializable, IMenu {
+public class ManagerMenuLayout implements Initializable, IMenu {
     @FXML
     private Button menuButton, appointmentButton, customerButton;
     @FXML
@@ -52,5 +54,20 @@ public class MenuLayout implements Initializable, IMenu {
         } else{
             tabButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #5E5E5E;-fx-background-radius: 23");
         }
+    }
+
+    @FXML
+    private void menuClicked() throws IOException {
+        WindowApp.SetScene("ManagerMenuPage.fxml");
+    }
+
+    @FXML
+    private void appointmentClicked() throws IOException {
+        WindowApp.SetScene("ManagerAppointmentViewAllPage.fxml");
+    }
+
+    @FXML
+    private void customerClicked() throws IOException {
+        WindowApp.SetScene("ManagerCustomerViewAllPage.fxml");
     }
 }

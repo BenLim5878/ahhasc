@@ -3,6 +3,7 @@ package com.ahhasc.Model;
 import com.ahhasc.Controller.*;
 
 import java.lang.reflect.Field;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -87,6 +88,20 @@ public class DataAccess {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static LocalTime ParseTime(int hour, int minute, String timeType){
+        if (timeType.equals("AM")){
+            if (hour == 12){
+                return LocalTime.of(0,minute,0);
+            }
+            return LocalTime.of(hour, minute,0);
+        } else{
+            if (hour == 12){
+                return LocalTime.of(12,minute,0);
+            }
+            return LocalTime.of(hour+12,minute,0);
         }
     }
 }

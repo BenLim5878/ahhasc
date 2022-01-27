@@ -1,7 +1,9 @@
 package com.ahhasc;
 
+import com.ahhasc.View.ManagerAppointmentViewAllPage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -14,11 +16,12 @@ public class WindowApp {
 
     public static void init(Stage stage) throws IOException {
         _mainStage =stage;
+        _mainStage.getIcons().add(new Image(ResourceLoader.LoadResourceAsStream("/material/app_icon.png")));
         _mainStage.setResizable(false);
         _mainStage.setTitle(Config.Appname);
         _mainStage.initStyle(StageStyle.TRANSPARENT);
         _mainStage.centerOnScreen();
-        SetScene("AccountProfileUpdatePage.fxml");
+        SetScene("ManagerCustomerViewAllPage.fxml");
         _mainStage.show();
     }
 
