@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianAppointmentDetailsPage">
+   <children>
+      <fx:include source="Component/ModalControl.fxml" />
+      <VBox prefHeight="656.0" prefWidth="1104.0">
+         <children>
+            <AnchorPane prefHeight="570.0" prefWidth="1045.0">
+               <children>
+                  <AnchorPane pickOnBounds="false" prefHeight="570.0" prefWidth="992.0">
+                     <children>
+                        <Button layoutX="8.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#backToOverview" prefHeight="36.03" prefWidth="120.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-background-radius: 5;" text="&lt; Back" textFill="#70b8b3">
+                           <font>
+                              <Font name="Nunito Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="1.5">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="211.0" layoutY="120.0" prefHeight="426.0" prefWidth="664.0" style="-fx-background-color: transparent;" styleClass="scrollpane">
+                           <content>
+                              <VBox prefHeight="587.0" prefWidth="628.0" spacing="32.0" style="-fx-background-color: transparent;">
+                                 <children>
+                                    <HBox prefHeight="189.0" prefWidth="654.0" style="-fx-background-color: white; -fx-background-radius: 12.79;">
+                                       <padding>
+                                          <Insets bottom="15.0" left="34.0" right="10.0" top="15.0" />
+                                       </padding>
+                                       <effect>
+                                          <DropShadow offsetY="3.41">
+                                             <color>
+                                                <Color opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="159.0" prefWidth="191.0">
+                                             <children>
+                                                <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../material/checklistcompletedicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="appointmentIDText" alignment="CENTER" prefHeight="20.0" prefWidth="171.0" text="Appointment 2" textFill="#7c7c7c">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label fx:id="appointmentStartTimeText" alignment="CENTER" prefHeight="20.0" prefWidth="171.0" text="26-12-2021 8:30pm" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="appointmentStatusText" alignment="CENTER" prefHeight="20.0" prefWidth="123.0" text="Completed" textFill="#a4a4a4">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <AnchorPane prefHeight="159.0" prefWidth="11.0" />
+                                          <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                          <AnchorPane prefHeight="159.0" prefWidth="23.0" />
+                                          <TextArea fx:id="appointmentDescriptionText" prefHeight="159.0" prefWidth="346.0" styleClass="textarea" text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search." wrapText="true">
+                                             <font>
+                                                <Font name="Nunito Regular" size="13.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="165.0" prefWidth="628.0" spacing="30.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="165.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 12.79;">
+                                             <effect>
+                                                <DropShadow offsetY="4.0">
+                                                   <color>
+                                                      <Color opacity="0.25" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <padding>
+                                                <Insets bottom="24.0" left="5.0" right="5.0" top="25.0" />
+                                             </padding>
+                                             <children>
+                                                <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../material/usericon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="customerNameText" alignment="CENTER" prefHeight="20.0" prefWidth="146.0" text="Ben Lim" textFill="#7c7c7c">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="16.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label fx:id="customerContactText" alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="0123456789" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="customerEmailText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="limzhengwei1002@gmail.com" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="165.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 12.79;">
+                                             <effect>
+                                                <DropShadow offsetY="4.0">
+                                                   <color>
+                                                      <Color opacity="0.25" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <padding>
+                                                <Insets bottom="24.0" left="5.0" right="5.0" top="25.0" />
+                                             </padding>
+                                             <children>
+                                                <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../material/roomicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="roomIDText" alignment="CENTER" prefHeight="20.0" prefWidth="146.0" text="Room 23" textFill="#7c7c7c">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="16.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label fx:id="floorNumberText" alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="Floor 2" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="blockText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="Block B" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="165.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 12.79;">
+                                             <effect>
+                                                <DropShadow offsetY="4.0">
+                                                   <color>
+                                                      <Color opacity="0.25" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <padding>
+                                                <Insets bottom="24.0" left="5.0" right="5.0" top="25.0" />
+                                             </padding>
+                                             <children>
+                                                <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../material/moneybagicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="paymentAmountText" alignment="CENTER" prefHeight="20.0" prefWidth="146.0" text="300$" textFill="#7c7c7c">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="16.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Label fx:id="paymentDueText" alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="Due on 31-12-2021" textFill="#8d8d8d">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="paymentStatusText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="Not Resolved" textFill="#d0786e">
+                                                   <font>
+                                                      <Font name="Nunito Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="technicianList" alignment="CENTER" prefHeight="187.0" prefWidth="623.0" style="-fx-background-color: white; -fx-background-radius: 12.79;">
+                                       <effect>
+                                          <DropShadow offsetY="4.0">
+                                             <color>
+                                                <Color opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <padding>
+                                          <Insets bottom="15.0" top="15.0" />
+                                       </padding>
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Text fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="No technician is assigned for this appointment">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="16.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#757575" strokeType="OUTSIDE" strokeWidth="0.0" text="Click &quot;Assign&quot; on the left to handle this appointment">
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="14.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </Text>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="5.0" top="5.0" />
+                                 </padding></VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <fx:include fx:id="layout" source="Component/TechnicianLayout.fxml" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets left="59.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/scrollpane.css" />
+      <URL value="@../css/textarea.css" />
+   </stylesheets>
+</VBox>

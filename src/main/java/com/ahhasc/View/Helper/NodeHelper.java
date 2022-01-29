@@ -54,6 +54,30 @@ public class NodeHelper {
         );
     }
 
+    public static void SetCustomNumericField(TextField textField, Integer maxDigitLength, Integer maxDigit){
+        textField.textProperty().addListener(
+                new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                        String newValue) {
+                        if (!newValue.matches("\\d*")) {
+                            textField.setText(newValue.replaceAll("[^\\d]", ""));
+                        }
+                        if (textField.getText().length() > maxDigitLength) {
+                            String s = textField.getText().substring(0, maxDigitLength);
+                            textField.setText(s);
+                        }
+                        if (textField.getText().length() > 0){
+                            if (Integer.parseInt(textField.getText()) > maxDigit){
+                                String s = textField.getText().substring(0, maxDigitLength-1);
+                                textField.setText(s);
+                            }
+                        }
+                    }
+                }
+        );
+    }
+
     public static String[] ProcessTime(LocalDateTime date){
         LocalTime time = date.toLocalTime();
         String[] out = new String[3];
@@ -78,5 +102,9 @@ public class NodeHelper {
     public static Node LoadNode(URL url) throws IOException {
         FXMLLoader loader = new FXMLLoader(url);
         return loader.load();
+    }
+
+    public static FXMLLoader LoadFXMLLoader(URL url) throws  IOException{
+        return new FXMLLoader(url);
     }
 }

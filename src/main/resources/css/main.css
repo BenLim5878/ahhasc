@@ -50,3 +50,7 @@
     -fx-background-color: #e8e8e8 !important;
 }
 
+.scroll-pane-transparent .viewport {
+    -fx-background-color: transparent !important ;
+}
+

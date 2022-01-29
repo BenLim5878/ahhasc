@@ -1,6 +1,8 @@
 package com.ahhasc;
 
+import com.ahhasc.Model.DataAccess;
 import com.ahhasc.View.ManagerAppointmentViewAllPage;
+import com.ahhasc.View.TechnicianAppointmentDetailsPage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -21,7 +23,7 @@ public class WindowApp {
         _mainStage.setTitle(Config.Appname);
         _mainStage.initStyle(StageStyle.TRANSPARENT);
         _mainStage.centerOnScreen();
-        SetScene("ManagerCustomerViewAllPage.fxml");
+        SetScene("TechnicianPaymentReviewPage.fxml");
         _mainStage.show();
     }
 

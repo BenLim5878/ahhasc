@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianAppointmentBrowsePage">
+   <children>
+      <fx:include source="Component/ModalControl.fxml" />
+      <VBox prefHeight="656.0" prefWidth="1104.0">
+         <children>
+            <AnchorPane prefHeight="570.0" prefWidth="1045.0">
+               <children>
+                  <AnchorPane pickOnBounds="false" prefHeight="570.0" prefWidth="992.0">
+                     <children>
+                        <Button layoutX="8.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#toOverview" prefHeight="36.03" prefWidth="120.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-background-radius: 5;" text="&lt; Overview" textFill="#70b8b3">
+                           <font>
+                              <Font name="Nunito Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="1.5">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <VBox layoutX="192.0" layoutY="120.0" prefHeight="484.0" prefWidth="654.0">
+                           <children>
+                              <HBox fx:id="inputContainer" prefHeight="62.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: white;">
+                                 <padding>
+                                    <Insets bottom="15.0" left="24.0" right="26.0" top="16.0" />
+                                 </padding>
+                                 <children>
+                                    <HBox fx:id="searchFieldContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="302.0" style="-fx-background-color: #EFEFEF; -fx-background-radius: 7;">
+                                       <children>
+                                          <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../material/searchicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <TextField fx:id="searchField" onKeyTyped="#searchFieldTyped" prefHeight="31.0" prefWidth="295.0" promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #4c4c4c;">
+                                             <font>
+                                                <Font name="Nunito Regular" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" right="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <DatePicker fx:id="datePicker" onAction="#chronologyInputChanged" prefHeight="100.0" prefWidth="143.0" promptText="Date" style="-fx-background-color: #EFEFEF;" styleClass="datepicker" />
+                                    <TextField fx:id="hourTextfield" alignment="CENTER" onKeyTyped="#chronologyInputChanged" prefHeight="100.0" prefWidth="80.0" promptText="HH" style="-fx-background-radius: 6.7; -fx-background-color: #EFEFEF;">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="minuteTextfield" alignment="CENTER" onKeyTyped="#chronologyInputChanged" prefHeight="100.0" prefWidth="80.0" promptText="MM" style="-fx-background-radius: 6.7; -fx-background-color: #EFEFEF;">
+                                       <font>
+                                          <Font name="Nunito Regular" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <ComboBox fx:id="searchAppointmentCombobox" onAction="#changeSearchType" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #EFEFEF;" styleClass="combobox">
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                    <Button fx:id="searchButton" disable="true" mnemonicParsing="false" onMouseClicked="#searchAppointment" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #81BE9E; -fx-background-radius: 7;" text="Search" textFill="WHITE">
+                                       <font>
+                                          <Font name="Nunito Bold" size="13.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="26.0" />
+                                       </HBox.margin>
+                                       <effect>
+                                          <DropShadow offsetY="2.0">
+                                             <color>
+                                                <Color opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                                 <effect>
+                                    <DropShadow offsetY="2.0">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </HBox>
+                              <VBox prefHeight="397.0" prefWidth="654.0" style="-fx-background-color: white; -fx-background-radius: 11.5;">
+                                 <effect>
+                                    <DropShadow offsetY="3.07">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <children>
+                                    <HBox prefHeight="51.0" prefWidth="654.0" style="-fx-background-color: white; -fx-background-radius: 11.5 11.5 0 0;">
+                                       <padding>
+                                          <Insets bottom="12.0" left="28.0" top="13.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="27.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../material/sticknoteicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="Added Appointment" textFill="#4c4c4c">
+                                             <font>
+                                                <Font name="Nunito Regular" size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" top="4.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Button fx:id="clearSearchButton" mnemonicParsing="false" onMouseClicked="#clearSearch" style="-fx-background-color: transparent;" text="Clear searches" textFill="#70b8b3" visible="false">
+                                             <font>
+                                                <Font name="Nunito Regular" size="13.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets left="310.0" top="1.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <effect>
+                                          <DropShadow height="27.24" offsetY="2.0" radius="6.31" width="0.0">
+                                             <color>
+                                                <Color red="0.3684210479259491" green="0.3684210479259491" blue="0.3684210479259491" opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </HBox>
+                                    <VBox fx:id="appointmentList" prefHeight="364.0" prefWidth="654.0">
+                                       <padding>
+                                          <Insets left="23.36" right="23.36" top="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="876.0" layoutY="317.0" prefHeight="126.0" prefWidth="33.1">
+                           <children>
+                              <Button fx:id="previousPageButton" mnemonicParsing="false" onMouseClicked="#previousPage" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="33.1" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../material/previouspageenabled.png" />
+                                       </image>
+                                       <effect>
+                                          <DropShadow offsetY="2.0" radius="4.75" width="0.0">
+                                             <color>
+                                                <Color opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Text fx:id="currentPageNumberText" fill="#33cccc" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="42.0">
+                                 <font>
+                                    <Font name="Nunito Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="16.0" top="16.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Button fx:id="nextPageButton" mnemonicParsing="false" onMouseClicked="#nextPage" style="-fx-background-color: transparent;">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="33.1" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../material/nextpageenabled.png" />
+                                       </image>
+                                       <effect>
+                                          <DropShadow offsetY="2.0" radius="4.75" width="0.0">
+                                             <color>
+                                                <Color opacity="0.25" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <fx:include fx:id="layout" source="Component/TechnicianLayout.fxml" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets left="59.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/scrollpane.css" />
+      <URL value="@../css/combobox.css" />
+      <URL value="@../css/datepicker.css" />
+   </stylesheets>
+</VBox>

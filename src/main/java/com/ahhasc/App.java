@@ -9,7 +9,7 @@ import java.io.IOException;
 public class App extends Application{
 
     public static void main(String[] args) {
-        Session.GetInstance().LoggedUser = DataAccess.GetInstance().UserController.GetUserByID(1);
+        Session.GetInstance().LoggedUser = DataAccess.GetInstance().UserController.GetUserByID(0);
         launch(args);
     }
 

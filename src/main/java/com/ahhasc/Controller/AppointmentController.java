@@ -1,5 +1,6 @@
 package com.ahhasc.Controller;
 
+import com.ahhasc.App;
 import com.ahhasc.Model.*;
 
 import java.awt.event.TextEvent;
@@ -95,15 +96,68 @@ public class AppointmentController implements IController {
         return out;
     }
 
-    public ArrayList<Appointment> GetUnassignedAppointment(){
+    public ArrayList<Appointment> GetUnassignedAppointment(Technician technicianToMatch){
         ArrayList<Appointment> out = new ArrayList<Appointment>();
         for (Appointment appointment: this.GetAppointments()){
-            if (appointment.ActiveTechnicians.size() == 0){
+            // Get only incomplete appointment
+            if (!appointment.getIsCompleted()){
+                // Get only payment unresolved appointment
+                if (!appointment.Payment.IsResolved){
+                    // Get only the appointment before 2 hours of the time
+                    if (appointment.StartTime.minusHours(2).isAfter(LocalDateTime.now())){
+                        // Get only the appointment that has below 2 technicians
+                        if (appointment.ActiveTechnicians.size() <= 2){
+                            // Get only the appointment that has not assigned by the technician themselves
+                            if (!appointment.ActiveTechnicians.contains(technicianToMatch)){
+                                out.add(appointment);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return out;
+    }
+
+    public ArrayList<Appointment> GetUnassignedAppointmentByCustomerName(Technician technicianToMatch, String customerName){
+        ArrayList<Appointment> out = new ArrayList<Appointment>();
+        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
+        for (Appointment appointment: unassignedAppointment){
+            if (appointment.BookingCustomer.FullName.trim().equalsIgnoreCase(customerName.trim())){
                 out.add(appointment);
             }
         }
         return out;
     }
+
+    public ArrayList<Appointment> GetUnassignedAppointmentByRoomID(Technician technicianToMatch, Integer roomID){
+        ArrayList<Appointment> out = new ArrayList<Appointment>();
+        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
+        for (Appointment appointment: unassignedAppointment){
+            if (appointment.BookingCustomer.Room.getRoomID() == roomID){
+                out.add(appointment);
+            }
+        }
+        return out;
+    }
+
+    public ArrayList<Appointment> GetUnassignedAppointmentByChronology(Technician technicianToMatch, LocalDateTime timeTarget, boolean isAfter){
+        ArrayList<Appointment> out = new ArrayList<Appointment>();
+        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
+        for (Appointment appointment: unassignedAppointment){
+            if (isAfter){
+                if (appointment.StartTime.isAfter(timeTarget)){
+                    out.add(appointment);
+                }
+            } else {
+                if (appointment.StartTime.isBefore(timeTarget)){
+                    out.add(appointment);
+                }
+            }
+        }
+        return out;
+    }
+
 
     public void AddAppointment(Appointment appointmentDescriptor){
         int appointmentID = GetNewAppointmentID();

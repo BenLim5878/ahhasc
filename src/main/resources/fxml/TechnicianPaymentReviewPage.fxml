@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianPaymentReviewPage">
+   <children>
+      <fx:include source="Component/ModalControl.fxml" />
+      <VBox prefHeight="656.0" prefWidth="1104.0">
+         <children>
+            <AnchorPane prefHeight="570.0" prefWidth="1045.0">
+               <children>
+                  <AnchorPane pickOnBounds="false" prefHeight="570.0" prefWidth="992.0">
+                     <children>
+                        <VBox layoutX="149.0" layoutY="112.0" prefHeight="484.0" prefWidth="736.0">
+                           <children>
+                              <HBox prefHeight="38.0" prefWidth="736.0">
+                                 <children>
+                                    <HBox prefHeight="35.0" prefWidth="426.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="112.0" prefWidth="211.0" style="-fx-background-color: #58ABA5;" text="Completed Appointment" textFill="#fcfcfc">
+                                             <font>
+                                                <Font name="Nunito Bold" size="14.84" />
+                                             </font>
+                                          </Button>
+                                          <Button mnemonicParsing="false" prefHeight="137.0" prefWidth="216.0" style="-fx-background-color: transparent;" text="Payment History" textFill="#808080">
+                                             <font>
+                                                <Font name="Nunito Bold" size="14.84" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <effect>
+                                          <DropShadow offsetY="4.0">
+                                             <color>
+                                                <Color opacity="0.10000000149011612" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="406.0" prefWidth="736.0" style="-fx-background-color: white; -fx-background-radius: 11.5;" styleClass="scrollpane">
+                                 <content>
+                                    <VBox fx:id="appointmentList" prefHeight="404.0" prefWidth="734.0" style="-fx-background-color: transparent;">
+                                       <padding>
+                                          <Insets left="23.0" right="23.0" />
+                                       </padding>
+                                    </VBox>
+                                 </content>
+                                 <effect>
+                                    <DropShadow offsetY="3.07">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets top="19.0" />
+                                 </VBox.margin>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <fx:include fx:id="layout" source="Component/TechnicianLayout.fxml" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </AnchorPane>
+         </children>
+         <padding>
+            <Insets left="59.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/scrollpane.css" />
+      <URL value="@../css/combobox.css" />
+      <URL value="@../css/datepicker.css" />
+   </stylesheets>
+</VBox>
