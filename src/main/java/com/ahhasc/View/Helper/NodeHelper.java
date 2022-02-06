@@ -1,5 +1,6 @@
 package com.ahhasc.View.Helper;
 
+import com.ahhasc.Model.Appointment;
 import com.ahhasc.ResourceLoader;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -10,12 +11,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class NodeHelper {
     public static void RemoveTextFieldFocus(Node fieldNode, Node noneFieldNode){
@@ -106,5 +109,13 @@ public class NodeHelper {
 
     public static FXMLLoader LoadFXMLLoader(URL url) throws  IOException{
         return new FXMLLoader(url);
+    }
+
+    public static void UpdateAppointmentContainer(VBox appointmentContainer, VBox alertContainer){
+        if (appointmentContainer.getChildren().size() == 0){
+            if (!appointmentContainer.getChildren().contains(alertContainer)) {
+                appointmentContainer.getChildren().add(alertContainer);
+            }
+        }
     }
 }

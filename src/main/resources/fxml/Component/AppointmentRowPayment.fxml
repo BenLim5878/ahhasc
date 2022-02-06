@@ -89,6 +89,36 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
+            <Font size="13.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="4.0">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="detailsButton" mnemonicParsing="false" onMouseClicked="#viewAppointmentDetails" prefWidth="65.0" style="-fx-background-color: #58ABA5; -fx-border-radius: 5; -fx-background-radius: 5;" text="Details" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Nunito Regular" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="4.0">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="addFeedbackButton" mnemonicParsing="false" onMouseClicked="#toAddFeedback" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #81BE9E; -fx-border-radius: 5; -fx-background-radius: 5;" text="Add Feedback" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
             <Font name="Nunito Regular" size="13.0" />
          </font>
          <effect>

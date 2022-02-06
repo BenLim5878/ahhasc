@@ -1,0 +1,78 @@
+Index: src/main/java/com/ahhasc/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ahhasc;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        App.main(args);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/ahhasc/Main.java b/src/main/java/com/ahhasc/Main.java
+--- a/src/main/java/com/ahhasc/Main.java	(revision 48a1c646628b58182b8b5b6ef4f7907fa5d0c7cf)
++++ b/src/main/java/com/ahhasc/Main.java	(date 1643292054633)
+@@ -5,3 +5,7 @@
+         App.main(args);
+     }
+ }
++
++
++
++
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 48a1c646628b58182b8b5b6ef4f7907fa5d0c7cf)
++++ /dev/null	(revision 48a1c646628b58182b8b5b6ef4f7907fa5d0c7cf)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <groupId>com.ahhasc</groupId>\r\n    <artifactId>ahhasc-maven</artifactId>\r\n    <version>1.0</version>\r\n    <name>ahhasc</name>\r\n    <packaging>jar</packaging>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-controls</artifactId>\r\n            <version>17</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>17</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-graphics</artifactId>\r\n            <version>17</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>io.github.palexdev</groupId>\r\n            <artifactId>materialfx</artifactId>\r\n            <version>11.12.0</version>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n    </properties>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.openjfx</groupId>\r\n                <artifactId>javafx-maven-plugin</artifactId>\r\n                <version>0.0.8</version>\r\n                <configuration>\r\n                    <mainClass>com.ahhasc.Main</mainClass>\r\n                </configuration>\r\n            </plugin>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.8.1</version>\r\n            </plugin>\r\n            <plugin>\r\n                <artifactId>maven-shade-plugin</artifactId>\r\n                <version>3.2.4</version>\r\n                <executions>\r\n                    <execution>\r\n                        <goals>\r\n                            <goal>shade</goal>\r\n                        </goals>\r\n                        <configuration>\r\n                            <finalName>ahhasc</finalName>\r\n                            <shadedArtifactAttached>true</shadedArtifactAttached>\r\n                            <transformers>\r\n                                <transformer implementation=\"org.apache.maven.plugins.shade.resource.ManifestResourceTransformer\">\r\n                                    <mainClass>com.ahhasc.Main</mainClass>\r\n                                </transformer>\r\n                            </transformers>\r\n                        </configuration>\r\n                    </execution>\r\n                </executions>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 48a1c646628b58182b8b5b6ef4f7907fa5d0c7cf)
++++ b/pom.xml	(date 1643292054657)
+@@ -53,6 +53,7 @@
+                 <version>3.8.1</version>
+             </plugin>
+             <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-shade-plugin</artifactId>
+                 <version>3.2.4</version>
+                 <executions>
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"ahhasc-maven\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n    <bytecodeTargetLevel>\r\n      <module name=\"ahhasc\" target=\"17\" />\r\n    </bytecodeTargetLevel>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 48a1c646628b58182b8b5b6ef4f7907fa5d0c7cf)
++++ b/.idea/compiler.xml	(date 1643710801788)
+@@ -6,11 +6,9 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
++        <module name="ahhasc" />
+         <module name="ahhasc-maven" />
+       </profile>
+     </annotationProcessing>
+-    <bytecodeTargetLevel>
+-      <module name="ahhasc" target="17" />
+-    </bytecodeTargetLevel>
+   </component>
+ </project>
+\ No newline at end of file

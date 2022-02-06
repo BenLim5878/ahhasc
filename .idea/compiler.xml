@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ahhasc" />
         <module name="ahhasc-maven" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ahhasc" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

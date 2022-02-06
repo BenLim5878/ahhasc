@@ -1,13 +1,17 @@
 package com.ahhasc.View.Component;
 
 import com.ahhasc.View.Abstract.IMenu;
+import com.ahhasc.View.TechnicianPaymentReviewPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.ahhasc.WindowApp.SetScene;
 
 public class TechnicianMenuLayout implements Initializable, IMenu {
 
@@ -62,13 +66,14 @@ public class TechnicianMenuLayout implements Initializable, IMenu {
     }
 
     @FXML
-    private void paymentClicked(){
-
+    private void paymentClicked() throws IOException {
+        SetScene("TechnicianPaymentReviewPage.fxml");
     }
 
     @FXML
-    private void feedbackClicked(){
-
+    private void feedbackClicked() throws IOException {
+        TechnicianPaymentReviewPage controller = (TechnicianPaymentReviewPage) SetScene("TechnicianPaymentReviewPage.fxml");
+        controller.SetInterface(TechnicianPaymentReviewPage.FEEDBACK);
     }
 
 
