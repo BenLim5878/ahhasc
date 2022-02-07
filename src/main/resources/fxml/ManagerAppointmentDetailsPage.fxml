@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianAppointmentDetailsPage">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.ManagerAppointmentDetailsPage">
    <children>
       <fx:include source="Component/ModalControl.fxml" />
       <VBox prefHeight="656.0" prefWidth="1104.0">
@@ -13,7 +13,7 @@
             <AnchorPane fx:id="mainContentContainer" prefHeight="570.0" prefWidth="1045.0">
                <children>
                   <fx:include fx:id="appointmentDetails" source="Component/AppointmentDetails.fxml" />
-                  <fx:include fx:id="layout" source="Component/TechnicianLayout.fxml" />
+                  <fx:include fx:id="layout" source="Component/ManagerLayout.fxml" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />

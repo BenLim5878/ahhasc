@@ -106,7 +106,7 @@ public class AppointmentController implements IController {
                     // Get only the appointment before 2 hours of the time
                     if (appointment.StartTime.minusHours(2).isAfter(LocalDateTime.now())){
                         // Get only the appointment that has below 2 technicians
-                        if (appointment.ActiveTechnicians.size() <= 2){
+                        if (appointment.ActiveTechnicians.size() == 0){
                             // Get only the appointment that has not assigned by the technician themselves
                             if (!appointment.ActiveTechnicians.contains(technicianToMatch)){
                                 out.add(appointment);
@@ -119,10 +119,15 @@ public class AppointmentController implements IController {
         return out;
     }
 
-    public ArrayList<Appointment> GetUnassignedAppointmentByCustomerName(Technician technicianToMatch, String customerName){
+    public ArrayList<Appointment> GetAppointmentByCustomerName(Technician technicianToMatch, String customerName,boolean isUnassigned){
         ArrayList<Appointment> out = new ArrayList<Appointment>();
-        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
-        for (Appointment appointment: unassignedAppointment){
+        ArrayList<Appointment> target = new ArrayList<>();
+        if (isUnassigned){
+            target = GetUnassignedAppointment(technicianToMatch);
+        } else {
+            target = GetAppointmentByTechnicianID(technicianToMatch.getTechnicianID(), false);
+        }
+        for (Appointment appointment: target){
             if (appointment.BookingCustomer.FullName.trim().equalsIgnoreCase(customerName.trim())){
                 out.add(appointment);
             }
@@ -130,10 +135,15 @@ public class AppointmentController implements IController {
         return out;
     }
 
-    public ArrayList<Appointment> GetUnassignedAppointmentByRoomID(Technician technicianToMatch, Integer roomID){
+    public ArrayList<Appointment> GetUnassignedAppointmentByRoomID(Technician technicianToMatch, Integer roomID, boolean isUnassigned){
         ArrayList<Appointment> out = new ArrayList<Appointment>();
-        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
-        for (Appointment appointment: unassignedAppointment){
+        ArrayList<Appointment> target = new ArrayList<>();
+        if (isUnassigned){
+            target = GetUnassignedAppointment(technicianToMatch);
+        } else {
+            target = GetAppointmentByTechnicianID(technicianToMatch.getTechnicianID(), false);
+        }
+        for (Appointment appointment: target){
             if (appointment.BookingCustomer.Room.getRoomID() == roomID){
                 out.add(appointment);
             }
@@ -141,10 +151,15 @@ public class AppointmentController implements IController {
         return out;
     }
 
-    public ArrayList<Appointment> GetUnassignedAppointmentByChronology(Technician technicianToMatch, LocalDateTime timeTarget, boolean isAfter){
+    public ArrayList<Appointment> GetUnassignedAppointmentByChronology(Technician technicianToMatch, LocalDateTime timeTarget, boolean isAfter, boolean isUnassigned){
         ArrayList<Appointment> out = new ArrayList<Appointment>();
-        ArrayList<Appointment> unassignedAppointment = GetUnassignedAppointment(technicianToMatch);
-        for (Appointment appointment: unassignedAppointment){
+        ArrayList<Appointment> target = new ArrayList<>();
+        if (isUnassigned){
+            target = GetUnassignedAppointment(technicianToMatch);
+        } else {
+            target = GetAppointmentByTechnicianID(technicianToMatch.getTechnicianID(), false);
+        }
+        for (Appointment appointment: target){
             if (isAfter){
                 if (appointment.StartTime.isAfter(timeTarget)){
                     out.add(appointment);

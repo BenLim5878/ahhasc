@@ -4,13 +4,14 @@ import java.time.LocalDateTime;
 
 public class Feedback {
     private Integer ID;
-    private float Rating;
+    private Integer Rating;
     private String Description;
     public LocalDateTime CreatedAt;
 
     public Feedback(int ID){
         this.ID = ID;
     }
+    public Feedback(){}
 
     public Integer getID(){
         return this.ID;
@@ -20,11 +21,11 @@ public class Feedback {
         this.ID = ID;
     }
 
-    public float getRating(){
+    public Integer getRating(){
         return this.Rating;
     }
 
-    public void setRating(float rating){
+    public void setRating(Integer rating){
         this.Rating = rating;
     }
 
@@ -41,7 +42,7 @@ public class Feedback {
         return String.format(
                 "%1$s;%2$s;%3$s;%4$s",
                 Integer.toString(this.getID()),
-                Float.toString(this.getRating()),
+                this.getRating(),
                 this.getDescription(),
                 this.CreatedAt.format(DataAccess.DefaultDateTimeFormat).toString()
         );

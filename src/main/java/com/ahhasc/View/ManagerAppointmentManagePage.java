@@ -2,6 +2,7 @@ package com.ahhasc.View;
 
 import com.ahhasc.Config;
 import com.ahhasc.Model.*;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.ManagerAppointmentSideMenu;
 import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
@@ -36,7 +37,7 @@ public class ManagerAppointmentManagePage implements Initializable {
     @FXML
     private HBox container;
     @FXML
-    private Button searchTypeButton, nextButton, saveButton;
+    private Button searchTypeButton, completedButton, cancelButton;
     @FXML
     private Text notFoundMessage,dueDateErrorMessage,startDateErrorMessage;
     @FXML
@@ -53,6 +54,11 @@ public class ManagerAppointmentManagePage implements Initializable {
     private Appointment _appointment;
     private boolean IsUpdateMode = false;
     private Customer _selectedCustomer;
+    private IDynamicContent _previousAppointmentDetailsScene = null;
+
+    public void SetPreviousScene(IDynamicContent previousAppointmentDetailsScene){
+        _previousAppointmentDetailsScene = previousAppointmentDetailsScene;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,8 +99,8 @@ public class ManagerAppointmentManagePage implements Initializable {
         timeTypeComboBox.setValue(NodeHelper.ProcessTime(appointment.StartTime)[2]);
         descriptionField.setText(appointment.Description);
 
-        nextButton.setDisable(false);
-        saveButton.setDisable(true);
+        completedButton.setDisable(true);
+        cancelButton.setDisable(false);
     }
 
     @FXML
@@ -206,11 +212,9 @@ public class ManagerAppointmentManagePage implements Initializable {
 
     private void checkCompleted(){
         if (nameField.getText().trim().length() > 0 && paymentField.getText().trim().length() > 0 && !dueDateErrorMessage.isVisible() && !startDateErrorMessage.isVisible() &&dueDateField.getValue() != null && startDateField.getValue() != null && descriptionField.getText().trim().length() > 0){
-            nextButton.setDisable(false);
-            saveButton.setDisable(false);
+            completedButton.setDisable(false);
         } else {
-            nextButton.setDisable(true);
-            saveButton.setDisable(true);
+            completedButton.setDisable(true);
         }
     }
 
@@ -223,10 +227,17 @@ public class ManagerAppointmentManagePage implements Initializable {
     }
 
     @FXML
-    private void onNextButtonClick() throws IOException {
+    private void onSaveContractClick() throws IOException {
         setContent();
-        ManagerTechnicianManagePage controller = (ManagerTechnicianManagePage) WindowApp.SetScene("ManagerTechniciansManagePage.fxml");
-        controller.LoadAppointment(_appointment, IsUpdateMode);
+        if (IsUpdateMode){
+            DataAccess.GetInstance().AppointmentController.UpdateAppointment(_appointment);
+            ManagerAppointmentDetailsPage controller = (ManagerAppointmentDetailsPage) WindowApp.SetScene("ManagerAppointmentDetailsPage.fxml");
+            controller.SetAppointment(_appointment);
+            controller.SetPreviousScene(_previousAppointmentDetailsScene);
+        } else {
+            DataAccess.GetInstance().AppointmentController.AddAppointment(_appointment);
+            WindowApp.SetScene("ManagerAppointmentViewAllPage.fxml");
+        }
     }
 
     private void setContent(){
@@ -249,12 +260,9 @@ public class ManagerAppointmentManagePage implements Initializable {
     }
 
     @FXML
-    private void onSaveButtonClick(){
-        setContent();
-        if (IsUpdateMode){
-            DataAccess.GetInstance().AppointmentController.UpdateAppointment(_appointment);
-        } else {
-            DataAccess.GetInstance().AppointmentController.AddAppointment(_appointment);
-        }
+    private void onCancelButtonClick() throws IOException {
+        ManagerAppointmentDetailsPage controller = (ManagerAppointmentDetailsPage) WindowApp.SetScene("ManagerAppointmentDetailsPage.fxml");
+        controller.SetAppointment(_appointment);
+        controller.SetPreviousScene(_previousAppointmentDetailsScene);
     }
 }

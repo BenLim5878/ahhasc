@@ -47,7 +47,6 @@ public class ManagerTechnicianManagePage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sideMenuController.SetTab(ManagerAppointmentSideMenu.ASSIGNTECHNICIANS);
         technicians = DataAccess.GetInstance().UserController.GetTechnicians();
         menuLayoutController.SetTab(ManagerMenuLayout.APPOINTMENT);
         loadTechnicansDetailsPane();

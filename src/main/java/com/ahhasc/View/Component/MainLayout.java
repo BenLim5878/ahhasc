@@ -1,5 +1,6 @@
 package com.ahhasc.View.Component;
 
+import com.ahhasc.Config;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Session;
 import com.ahhasc.WindowApp;
@@ -26,7 +27,7 @@ public class MainLayout implements Initializable {
     @FXML
     private Label usernameLabel;
     @FXML
-    private Text roleText;
+    private Text roleText, appNameText;
     @FXML
     private VBox topMenu;
     @FXML
@@ -37,6 +38,7 @@ public class MainLayout implements Initializable {
         topMenu.setVisible(false);
         layout.setPickOnBounds(false);
         updateUserInformation();
+        appNameText.setText(Config.Appname);
     }
 
     private void setCloseTopMenuHandler(){

@@ -257,7 +257,7 @@
                               <VBox prefHeight="443.0" prefWidth="157.93">
                                  <children>
                                     <fx:include fx:id="sideMenu" source="Component/ManagerCustomerMenu.fxml" />
-                                    <Button fx:id="completeButton" disable="true" mnemonicParsing="false" onMouseClicked="#onCompleteButtonClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #71988D;" text="Complete" textFill="WHITE">
+                                    <Button fx:id="completeButton" disable="true" mnemonicParsing="false" onMouseClicked="#onCompleteButtonClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #71988D;" text="Register" textFill="WHITE">
                                        <font>
                                           <Font name="Nunito Bold" size="14.57" />
                                        </font>

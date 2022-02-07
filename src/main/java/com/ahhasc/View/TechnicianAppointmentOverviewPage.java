@@ -5,6 +5,7 @@ import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Session;
 import com.ahhasc.Model.Technician;
 import com.ahhasc.ResourceLoader;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.AppointmentRow;
 import com.ahhasc.View.Component.TechnicianMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
@@ -22,7 +23,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class TechnicianAppointmentOverviewPage implements Initializable {
+public class TechnicianAppointmentOverviewPage implements Initializable, IDynamicContent {
 
     @FXML
     private Label activeAppointmentMessage, completedAppointmentText, feedbackSubmittedText, paymentReceivedText, greetingText;
@@ -95,6 +96,7 @@ public class TechnicianAppointmentOverviewPage implements Initializable {
                 appointmentList.getChildren().add(appointmentRowLoader.load());
                 AppointmentRow appointmentRowController = (AppointmentRow) appointmentRowLoader.getController();
                 appointmentRowController.SetAppointment(appointment);
+                appointmentRowController.SetPreviousScene(this::showContent);
             }
         } catch(IOException ex){
             ex.printStackTrace();
@@ -106,4 +108,8 @@ public class TechnicianAppointmentOverviewPage implements Initializable {
         WindowApp.SetScene("technicianAppointmentBrowsePage.fxml");
     }
 
+    @Override
+    public void showContent() throws IOException {
+        WindowApp.SetScene("TechnicianAppointmentOverviewPage.fxml");
+    }
 }

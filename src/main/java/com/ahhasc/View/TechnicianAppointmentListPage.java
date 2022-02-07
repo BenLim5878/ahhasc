@@ -4,9 +4,11 @@ import com.ahhasc.Model.Appointment;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Session;
 import com.ahhasc.ResourceLoader;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.AppointmentRowPayment;
 import com.ahhasc.View.Component.TechnicianMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class TechnicianPaymentReviewPage implements Initializable {
+public class TechnicianAppointmentListPage implements Initializable, IDynamicContent {
 
     @FXML
     private VBox appointmentList, alertContainer;
@@ -39,6 +41,7 @@ public class TechnicianPaymentReviewPage implements Initializable {
     public static final String FEEDBACK = "Feedback";
 
     private String _interfaceType = PAYMENT;
+    private boolean _isCompleted = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -95,7 +98,9 @@ public class TechnicianPaymentReviewPage implements Initializable {
                 }
             } else {
                 if (appointment.getFeedback() == null){
-                    out.add(appointment);
+                    if (appointment.getIsCompleted()){
+                        out.add(appointment);
+                    }
                 }
             }
         }
@@ -159,6 +164,7 @@ public class TechnicianPaymentReviewPage implements Initializable {
         }
         appointmentRowController.setAlertContainer(alertContainer);
         appointmentRowController.SetAppointment(appointment);
+        appointmentRowController.SetPreviousScene(this::showContent);
     }
 
     private void changeTab(String tabType){
@@ -177,6 +183,7 @@ public class TechnicianPaymentReviewPage implements Initializable {
         }
         firstTabButton.setStyle("-fx-background-color:transparent;-fx-text-fill: #808080");
         secondTabButton.setStyle("-fx-background-color:#58ABA5;-fx-text-fill: #fcfcfc");
+        _isCompleted = true;
     }
 
     @FXML
@@ -191,5 +198,15 @@ public class TechnicianPaymentReviewPage implements Initializable {
         }
         secondTabButton.setStyle("-fx-background-color:transparent;-fx-text-fill: #808080");
         firstTabButton.setStyle("-fx-background-color:#58ABA5;-fx-text-fill: #fcfcfc");
+        _isCompleted = false;
+    }
+
+    @Override
+    public void showContent() throws IOException {
+        TechnicianAppointmentListPage controller = (TechnicianAppointmentListPage) WindowApp.SetScene("TechnicianAppointmentListPage.fxml");
+        controller.SetInterface(_interfaceType);
+        if (_isCompleted){
+            controller.toHistory();
+        }
     }
 }

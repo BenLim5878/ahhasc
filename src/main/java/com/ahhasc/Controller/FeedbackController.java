@@ -22,7 +22,7 @@ public class FeedbackController implements IController{
         for (String feedbackRecord : _repository.GetRecords()){
             String[] record = feedbackRecord.split(";");
             Feedback feedback = new Feedback(Integer.parseInt(record[0]));
-            feedback.setRating(Float.parseFloat(record[1]));
+            feedback.setRating(Integer.parseInt(record[1]));
             feedback.setDescription(record[2]);
             feedback.CreatedAt = LocalDateTime.parse(record[3],DataAccess.DefaultDateTimeFormat);
             _data.add(feedback);
@@ -38,13 +38,14 @@ public class FeedbackController implements IController{
         return null;
     }
 
-   public void AddFeedback(Feedback feedbackDescriptor){
+   public Feedback AddFeedback(Feedback feedbackDescriptor){
        int paymentID = GetNewFeedbackID();
 
        feedbackDescriptor.setID(paymentID);
 
        _data.add(feedbackDescriptor);
        _repository.AddNewRecord(feedbackDescriptor.toString());
+       return feedbackDescriptor;
    }
 
    public void UpdateFeedback(Feedback feedbackDescriptor){

@@ -334,18 +334,18 @@
                               <VBox prefHeight="443.0" prefWidth="157.93">
                                  <children>
                                     <fx:include fx:id="sideMenu" source="Component/ManagerAppointmentMenu.fxml" />
-                                    <Button fx:id="nextButton" disable="true" mnemonicParsing="false" onMouseClicked="#onNextButtonClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: A1DF72;" text="Next" textFill="WHITE">
+                                    <Button fx:id="completedButton" disable="true" mnemonicParsing="false" onMouseClicked="#onSaveContractClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: A1DF72;" text="Save Contract" textFill="WHITE">
                                        <font>
                                           <Font name="Nunito Bold" size="14.57" />
                                        </font>
                                        <VBox.margin>
-                                          <Insets top="160.0" />
+                                          <Insets top="225.0" />
                                        </VBox.margin>
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button fx:id="saveButton" disable="true" mnemonicParsing="false" onMouseClicked="#onSaveButtonClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: B8B8B8;" text="Save" textFill="WHITE">
+                                    <Button fx:id="cancelButton" disable="true" mnemonicParsing="false" onMouseClicked="#onCancelButtonClick" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: B8B8B8;" text="Cancel" textFill="WHITE">
                                        <font>
                                           <Font name="Nunito Bold" size="14.57" />
                                        </font>

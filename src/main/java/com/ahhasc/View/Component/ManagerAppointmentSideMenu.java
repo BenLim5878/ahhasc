@@ -14,25 +14,22 @@ public class ManagerAppointmentSideMenu implements IMenu {
 
     public static final String VIEWALL = "viewall";
     public static final String ADDNEWAPPOINTMENT = "addnewappointment";
-    public static final String ASSIGNTECHNICIANS = "assigntechnicians";
     public static final String UPDATEEXISTINGAPPOINTMENT = "updateexistingappointment";
 
     private Appointment _appointment;
 
     public void SetAppointment(Appointment appointment){
         _appointment = appointment;
-        assignTechniciansButton.setDisable(false);
         updateExistingAppointmentButton.setDisable(false);
     }
 
     public void ClearAppointment(){
         _appointment = null;
-        assignTechniciansButton.setDisable(true);
         updateExistingAppointmentButton.setDisable(true);
     }
 
     @FXML
-    private Button viewAllButton, addNewAppointmentButton, assignTechniciansButton, updateExistingAppointmentButton;
+    private Button viewAllButton, addNewAppointmentButton, updateExistingAppointmentButton;
 
     @Override
     public void SetTab(String tabName) {
@@ -40,25 +37,16 @@ public class ManagerAppointmentSideMenu implements IMenu {
             case VIEWALL -> {
                 StyleTab(viewAllButton, true);
                 StyleTab(addNewAppointmentButton, false);
-                StyleTab(assignTechniciansButton, false);
                 StyleTab(updateExistingAppointmentButton, false);
             }
             case ADDNEWAPPOINTMENT -> {
                 StyleTab(viewAllButton, false);
                 StyleTab(addNewAppointmentButton, true);
-                StyleTab(assignTechniciansButton, false);
-                StyleTab(updateExistingAppointmentButton, false);
-            }
-            case ASSIGNTECHNICIANS -> {
-                StyleTab(viewAllButton, false);
-                StyleTab(addNewAppointmentButton, false);
-                StyleTab(assignTechniciansButton, true);
                 StyleTab(updateExistingAppointmentButton, false);
             }
             case UPDATEEXISTINGAPPOINTMENT -> {
                 StyleTab(viewAllButton, false);
                 StyleTab(addNewAppointmentButton, false);
-                StyleTab(assignTechniciansButton, false);
                 StyleTab(updateExistingAppointmentButton, true);
             }
         }

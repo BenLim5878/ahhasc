@@ -47,13 +47,6 @@ public class ManagerCustomerViewAllPage implements Initializable {
         tableViewController.LoadConfig(TableType.ManagerCustomer);
         topMenuController.SetTab(ManagerMenuLayout.CUSTOMER);
         sideMenuController.SetTab(ManagerCustomerSideMenu.VIEWALL);
-        content.getChildren().remove(contentList);
-        try {
-            Node node = NodeHelper.LoadNode(ResourceLoader.LoadURL("/fxml/Component/ViewAppointmentDetail.fxml"));
-            content.getChildren().add(0,node);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML

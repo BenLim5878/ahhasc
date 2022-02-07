@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianPaymentReviewPage">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1104.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.TechnicianAppointmentListPage">
    <children>
       <fx:include source="Component/ModalControl.fxml" />
       <VBox prefHeight="656.0" prefWidth="1104.0">
@@ -73,7 +73,7 @@
                                                 </ImageView>
                                                 <Text fx:id="alertTitleText" fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="No result found!">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font name="Nunito Regular" size="17.0" />
                                                    </font>
                                                    <VBox.margin>
                                                       <Insets top="20.0" />
@@ -83,6 +83,9 @@
                                                    <VBox.margin>
                                                       <Insets top="5.0" />
                                                    </VBox.margin>
+                                                   <font>
+                                                      <Font name="Nunito Regular" size="13.0" />
+                                                   </font>
                                                 </Text>
                                              </children>
                                           </VBox>

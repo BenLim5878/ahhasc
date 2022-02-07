@@ -1,13 +1,12 @@
 package com.ahhasc.View.Component;
 
-import com.ahhasc.Model.Appointment;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.View.Abstract.AbstractAppointmentRow;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.TechnicianAppointmentDetailsPage;
 import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 
 import java.io.IOException;
@@ -16,6 +15,12 @@ import java.time.LocalDateTime;
 public class AppointmentRow extends AbstractAppointmentRow {
     @FXML
     private Label customerNameLabel, paymentLabel, roomLabel, timeStartLabel;
+
+    private IDynamicContent _previousSceneController = null;
+
+    public void SetPreviousScene(IDynamicContent previousSceneController){
+        _previousSceneController = previousSceneController;
+    }
 
     @Override
     protected void DisplayAppointment(){
@@ -45,6 +50,7 @@ public class AppointmentRow extends AbstractAppointmentRow {
     private void showAppointmentDetail() throws IOException {
         TechnicianAppointmentDetailsPage controller = (TechnicianAppointmentDetailsPage) WindowApp.SetScene("TechnicianAppointmentDetailsPage.fxml");
         controller.SetAppointment(this._appointment);
+        controller.SetPreviousScene(this._previousSceneController);
     }
 
 }

@@ -11,12 +11,11 @@ public class Customer{
     public String TelNumber;
 
     public Customer(int customerID){
-        super();
         this.CustomerID= customerID;
     }
 
     public Customer(){
-        super();
+
     }
 
     public Integer getCustomerID(){

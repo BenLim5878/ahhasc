@@ -1,9 +1,8 @@
 package com.ahhasc;
 
-import com.ahhasc.Model.DataAccess;
-import com.ahhasc.View.ManagerAppointmentViewAllPage;
-import com.ahhasc.View.TechnicianAppointmentDetailsPage;
-import com.ahhasc.View.TechnicianPaymentReviewPage;
+import com.ahhasc.Model.Session;
+import com.ahhasc.Model.User;
+import com.ahhasc.View.LoginPage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -24,7 +23,18 @@ public class WindowApp {
         _mainStage.setTitle(Config.Appname);
         _mainStage.initStyle(StageStyle.TRANSPARENT);
         _mainStage.centerOnScreen();
-        SetScene("TechnicianPaymentReviewPage.fxml");
+        if (Session.GetInstance().IsLoggedIn){
+            switch (Session.GetInstance().LoggedUser.Role){
+                case User.MANAGER->{
+                    SetScene("ManagerMenuPage.fxml");
+                }
+                case User.TECHNICIAN -> {
+                    SetScene("TechnicianAppointmentOverviewPage.fxml");
+                }
+            }
+        } else {
+            SetScene("LoginPage.fxml");
+        }
         _mainStage.show();
     }
 

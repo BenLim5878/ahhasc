@@ -9,7 +9,7 @@ public class Session {
 
     private Repository _repository;
     private static Session Instance = null;
-    public boolean IsLoggedIn;
+    public boolean IsLoggedIn =false;
     public User LoggedUser;
     private LocalDateTime TimeCreated;
     private LocalDateTime ExpiryTime;

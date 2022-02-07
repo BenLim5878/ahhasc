@@ -1,7 +1,7 @@
 package com.ahhasc.View.Component;
 
 import com.ahhasc.View.Abstract.IMenu;
-import com.ahhasc.View.TechnicianPaymentReviewPage;
+import com.ahhasc.View.TechnicianAppointmentListPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -61,19 +61,19 @@ public class TechnicianMenuLayout implements Initializable, IMenu {
     }
 
     @FXML
-    private void appointmentClicked(){
-
+    private void appointmentClicked() throws IOException {
+        SetScene("TechnicianAppointmentOverviewPage.fxml");
     }
 
     @FXML
     private void paymentClicked() throws IOException {
-        SetScene("TechnicianPaymentReviewPage.fxml");
+        SetScene("TechnicianAppointmentListPage.fxml");
     }
 
     @FXML
     private void feedbackClicked() throws IOException {
-        TechnicianPaymentReviewPage controller = (TechnicianPaymentReviewPage) SetScene("TechnicianPaymentReviewPage.fxml");
-        controller.SetInterface(TechnicianPaymentReviewPage.FEEDBACK);
+        TechnicianAppointmentListPage controller = (TechnicianAppointmentListPage) SetScene("TechnicianAppointmentListPage.fxml");
+        controller.SetInterface(TechnicianAppointmentListPage.FEEDBACK);
     }
 
 

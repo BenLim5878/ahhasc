@@ -129,12 +129,12 @@
                                           <Insets bottom="12.0" left="28.0" top="13.0" />
                                        </padding>
                                        <children>
-                                          <ImageView fitHeight="27.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="appointmentListIcon" fitHeight="27.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../material/sticknoteicon.png" />
                                              </image>
                                           </ImageView>
-                                          <Label text="Added Appointment" textFill="#4c4c4c">
+                                          <Label fx:id="appointmentListTitleText" text="New Appointment" textFill="#4c4c4c">
                                              <font>
                                                 <Font name="Nunito Regular" size="15.0" />
                                              </font>
@@ -224,6 +224,21 @@
                               </Button>
                            </children>
                         </VBox>
+                        <Button fx:id="appointmentTypeButton" layoutX="8.0" layoutY="179.0" mnemonicParsing="false" onMouseClicked="#changeAppointmentType" prefHeight="37.0" prefWidth="152.0" style="-fx-background-color: #70b8b3; -fx-border-color: transparent; -fx-background-radius: 5;" text="Browse History..." textFill="WHITE">
+                           <font>
+                              <Font name="Nunito Bold" size="15.0" />
+                           </font>
+                           <effect>
+                              <DropShadow offsetY="1.5">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <fx:include fx:id="layout" source="Component/TechnicianLayout.fxml" />

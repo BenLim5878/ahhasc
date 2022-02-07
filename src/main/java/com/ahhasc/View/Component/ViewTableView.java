@@ -4,15 +4,18 @@ import com.ahhasc.Model.Appointment;
 import com.ahhasc.Model.Customer;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.ResourceLoader;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Helper.NodeHelper;
+import com.ahhasc.View.ManagerAppointmentDetailsPage;
+import com.ahhasc.View.ManagerCustomerManagePage;
 import com.ahhasc.View.ViewModel.ViewAppointment;
 import com.ahhasc.View.ViewModel.ViewCustomer;
+import com.ahhasc.WindowApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -25,7 +28,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ViewTableView implements Initializable {
+public class ViewTableView implements Initializable,IDynamicContent {
     @FXML
     private TableView dataTable;
 
@@ -80,10 +83,21 @@ public class ViewTableView implements Initializable {
                 switch (_tableType){
                     case ManagerAppointment ->{
                         ViewAppointment rowData = (ViewAppointment)row.getItem();
-                        System.out.println(rowData);
+                        try{
+                            ManagerAppointmentDetailsPage controller = (ManagerAppointmentDetailsPage) WindowApp.SetScene("ManagerAppointmentDetailsPage.fxml");
+                            controller.SetAppointment(DataAccess.GetInstance().AppointmentController.GetAppointmentByID(rowData.getAppointmentID()));
+                            controller.SetPreviousScene(this::showContent);
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                     } case ManagerCustomer -> {
                         ViewCustomer rowData = (ViewCustomer)row.getItem();
-                        System.out.println(rowData.getCustomerID());
+                        try{
+                            ManagerCustomerManagePage controller = (ManagerCustomerManagePage) WindowApp.SetScene("ManagerCustomerManagePage.fxml");
+                            controller.LoadCustomer(DataAccess.GetInstance().CustomerController.GetCustomer(new Customer(rowData.getCustomerID())).get(0));
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                     }
                 }
             });
@@ -155,5 +169,17 @@ public class ViewTableView implements Initializable {
 
     public void showEmptyData(){
         _tableData.clear();
+    }
+
+    @Override
+    public void showContent() throws IOException {
+        switch (_tableType){
+            case ManagerAppointment -> {
+                WindowApp.SetScene("ManagerAppointmentViewAllPage.fxml");
+            }
+            case ManagerCustomer -> {
+                WindowApp.SetScene("ManagerCustomerViewAllPage.fxml");
+            }
+        }
     }
 }

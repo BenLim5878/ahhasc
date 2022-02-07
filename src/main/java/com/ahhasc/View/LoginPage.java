@@ -4,6 +4,7 @@ import com.ahhasc.Config;
 import com.ahhasc.Model.AuthenticatedResult;
 import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.RegistrationResult;
+import com.ahhasc.Model.User;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.AbstractModalWindow;
 import com.ahhasc.View.Component.ModalControl;
@@ -69,7 +70,7 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
     }
 
     @FXML
-    private void loginBtnClicked(){
+    private void loginBtnClicked() throws IOException {
         String email = emailAddressField.getText();
         String password = passwordField.getText();
         Boolean isUserSaved = staySignInCheckbox.isSelected();
@@ -78,6 +79,14 @@ public class LoginPage extends AbstractModalWindow implements Initializable {
             loginIcon.setImage(new Image(ResourceLoader.LoadResourceAsStream("/material/nextbtnsuccessimg.png")));
             loginBtn.setOnMouseEntered(null);
             loginBtn.setOnMouseExited(null);
+            switch (authResult.AuthenticatedUser.Role){
+                case User.MANAGER -> {
+                    WindowApp.SetScene("ManagerMenuPage.fxml");
+                }
+                case User.TECHNICIAN -> {
+                    WindowApp.SetScene("TechnicianAppointmentOverviewPage.fxml");
+                }
+            }
         } else {
             message.setTextFill(Color.web("#e14545"));
             message.setText("Invalid Credentials");

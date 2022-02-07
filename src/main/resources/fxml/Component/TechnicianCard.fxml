@@ -2,43 +2,89 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="146.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.TechnicianCard">
+
+<HBox prefHeight="200.0" prefWidth="593.0" stylesheets="@../../css/textarea.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ahhasc.View.Component.TechnicianCard">
    <children>
-      <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <image>
-            <Image url="@../../material/credentialcardicon.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="technicianCountText" alignment="CENTER" prefHeight="20.0" prefWidth="146.0" text="Technician 1" textFill="#7c7c7c">
-         <font>
-            <Font name="Nunito Bold" size="13.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="17.0" />
-         </VBox.margin>
-      </Label>
-      <Label fx:id="technicianNameText" alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="Ben Lim" textFill="#8d8d8d">
-         <font>
-            <Font name="Nunito Regular" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="technicianContactText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="0123456789" textFill="#8d8d8d">
-         <font>
-            <Font name="Nunito Regular" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="technicianSpecializationText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="Electronic" textFill="#8d8d8d">
-         <font>
-            <Font name="Nunito Regular" size="12.0" />
-         </font>
-      </Label>
+      <VBox alignment="CENTER" prefHeight="146.0" prefWidth="204.0">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../material/credentialcardicon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="technicianCountText" alignment="CENTER" prefHeight="20.0" prefWidth="146.0" text="Technician 1" textFill="#7c7c7c">
+               <font>
+                  <Font name="Nunito Bold" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="17.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="technicianNameText" alignment="CENTER" prefHeight="20.0" prefWidth="136.0" text="Ben Lim" textFill="#8d8d8d">
+               <font>
+                  <Font name="Nunito Regular" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="technicianContactText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="0123456789" textFill="#8d8d8d">
+               <font>
+                  <Font name="Nunito Regular" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="technicianSpecializationText" alignment="CENTER" prefHeight="17.0" prefWidth="196.0" text="Electronic" textFill="#8d8d8d">
+               <font>
+                  <Font name="Nunito Regular" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox fx:id="feedbackDescriptionContainer" alignment="CENTER" prefHeight="200.0" prefWidth="383.0">
+         <children>
+            <Text fx:id="noFeedbackText" fill="#aeaeae" strokeType="OUTSIDE" strokeWidth="0.0" text="No Feedback Added">
+               <font>
+                  <Font name="Nunito Regular" size="15.0" />
+               </font>
+            </Text>
+            <VBox fx:id="feedbackContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text fill="#656565" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating">
+                     <font>
+                        <Font name="Nunito Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ratingText" fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0" text="4.5">
+                     <font>
+                        <Font name="Nunito Regular" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="workloadDescriptionTextArea" editable="false" prefHeight="139.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-text-fill: #4c4c4c;" styleClass="textarea" text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." wrapText="true">
+                     <font>
+                        <Font name="Nunito Regular" size="12.5" />
+                     </font>
+                  </TextArea>
+               </children>
+            </VBox>
+            <Text fill="#4c4c4c" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Nunito Regular" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
    </children>
-</VBox>
+</HBox>

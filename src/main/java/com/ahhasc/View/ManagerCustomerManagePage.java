@@ -6,12 +6,14 @@ import com.ahhasc.Model.Room;
 import com.ahhasc.View.Component.ManagerCustomerSideMenu;
 import com.ahhasc.View.Component.ManagerMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
+import com.ahhasc.WindowApp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -53,10 +55,11 @@ public class ManagerCustomerManagePage implements Initializable {
         roomUnitField.setText(customer.Room.Unit.toString());
         floorField.setText(customer.Room.Floor.toString());
         blockField.setText(customer.Room.Block);
+        completeButton.setText("Update");
     }
 
     @FXML
-    private void onCompleteButtonClick(){
+    private void onCompleteButtonClick() throws IOException {
         if (!IsUpdateMode){
             _customer = new Customer();
         }
@@ -75,12 +78,12 @@ public class ManagerCustomerManagePage implements Initializable {
         } else {
             DataAccess.GetInstance().CustomerController.RegisterCustomer(_customer);
         }
-
+        WindowApp.SetScene("ManagerCustomerViewAllPage.fxml");
     }
 
     @FXML
-    private void onCancelButtonClick(){
-
+    private void onCancelButtonClick() throws IOException {
+        WindowApp.SetScene("ManagerCustomerViewAllPage.fxml");
     }
 
     @FXML

@@ -46,6 +46,13 @@ public class Appointment {
         return out;
     }
 
+    public boolean IsExpired(){
+        if (this.StartTime.isBefore(LocalDateTime.now()) && !this.IsCompleted){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString(){
         String technicians = "";

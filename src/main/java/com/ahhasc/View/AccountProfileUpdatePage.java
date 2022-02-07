@@ -4,6 +4,7 @@ import com.ahhasc.Model.DataAccess;
 import com.ahhasc.Model.Session;
 import com.ahhasc.Model.User;
 import com.ahhasc.ResourceLoader;
+import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.MainLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import com.ahhasc.WindowApp;
@@ -38,8 +39,6 @@ public class AccountProfileUpdatePage implements Initializable {
     private Pane editablePasswordContent;
     @FXML
     private Label savePasswordMessage;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,9 +206,7 @@ public class AccountProfileUpdatePage implements Initializable {
         if (Session.GetInstance().LoggedUser.Role.equals(User.MANAGER)){
             WindowApp.SetScene("ManagerMenuPage.fxml");
         } else {
-            // Not Implemented
-            Platform.exit();
-            System.exit(-1);
+            WindowApp.SetScene("TechnicianAppointmentOverviewPage.fxml");
         }
     }
 }

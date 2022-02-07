@@ -25,7 +25,7 @@
                   <Image url="@../../material/applogo.png" />
                </image>
             </ImageView>
-            <Text fill="#4c7c53" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="system-appname" text="PixaService">
+            <Text fx:id="appNameText" fill="#4c7c53" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="system-appname" text="PixaService">
                <font>
                   <Font size="16.87" />
                </font>

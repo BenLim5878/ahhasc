@@ -1,6 +1,3 @@
 0;Technician;0;jinnhao@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Jinn Hao;987;Smoke;whatsup
 1;Manager;0;limzhengwei1002@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Ben Lim;0113998039
 2;Technician;1;daniel@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Daniel Wong Wei Yang;3232;Drunk;none
-3;Technician;2;daniel@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Daniel Wong Wei Yang;3232;Drunk;none
-4;Technician;3;daniel@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Daniel Wong Wei Yang;3232;Drunk;none
-5;Technician;4;daniel@gmail.com;66f4f79865d3bf7f4a70eeed8bb853c57d8cbc6353d96919230b66f91e19ec9b;Daniel Wong Wei Yang;3232;Drunk;none
