@@ -7,6 +7,7 @@ import com.ahhasc.Model.Technician;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.AppointmentRow;
+import com.ahhasc.View.Component.NoAppointmentFound;
 import com.ahhasc.View.Component.TechnicianMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import com.ahhasc.WindowApp;
@@ -88,9 +89,14 @@ public class TechnicianAppointmentOverviewPage implements Initializable, IDynami
         paymentReceivedText.setText(String.format("%.2f$",totalReceivedPayment));
     }
 
-    private void LoadUpcomingAppointments() {
+    private void LoadUpcomingAppointments(){
         ArrayList<Appointment> appointments = DataAccess.GetInstance().AppointmentController.GetAppointmentByTechnicianID(_technician.getTechnicianID(),true);
         try {
+            if (appointments.size() == 0){
+                FXMLLoader noAppointmentFoundLoader =  NodeHelper.LoadFXMLLoader(ResourceLoader.LoadURL("/fxml/Component/NoAppointmentFound.fxml"));
+                appointmentList.getChildren().add(noAppointmentFoundLoader.load());
+                return;
+            }
             for (Appointment appointment: appointments){
                 FXMLLoader appointmentRowLoader = NodeHelper.LoadFXMLLoader(ResourceLoader.LoadURL("/fxml/Component/AppointmentRow.fxml"));
                 appointmentList.getChildren().add(appointmentRowLoader.load());

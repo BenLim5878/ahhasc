@@ -114,7 +114,7 @@
                                              <children>
                                                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../material/checklisticon.png" />
+                                                      <Image url="@../material/contractcompletedimg.png" />
                                                    </image>
                                                    <VBox.margin>
                                                       <Insets left="18.0" />

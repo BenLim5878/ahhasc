@@ -8,6 +8,7 @@ import com.ahhasc.Model.Technician;
 import com.ahhasc.ResourceLoader;
 import com.ahhasc.View.Abstract.IDynamicContent;
 import com.ahhasc.View.Component.AppointmentRow;
+import com.ahhasc.View.Component.NoAppointmentFound;
 import com.ahhasc.View.Component.TechnicianMenuLayout;
 import com.ahhasc.View.Helper.NodeHelper;
 import com.ahhasc.WindowApp;
@@ -112,6 +113,22 @@ public class TechnicianAppointmentBrowsePage implements Initializable, IDynamicC
     private void LoadAppointments(){
         appointmentList.getChildren().clear();
         try{
+            if (_availableAppointment.size() == 0){
+                FXMLLoader noAppointmentFoundLoader =  NodeHelper.LoadFXMLLoader(ResourceLoader.LoadURL("/fxml/Component/NoAppointmentFound.fxml"));
+                appointmentList.getChildren().add(noAppointmentFoundLoader.load());
+                NoAppointmentFound controller = noAppointmentFoundLoader.getController();
+                switch (_appointmentType){
+                    case NEWAPPOINTMENT -> {
+                        controller.SetMessageTitle("No New Appointment");
+                        controller.SetMessageDescription("Expired appointments will not appear in here");
+                    }
+                    case APPOINTMENTHISTORY -> {
+                        controller.SetMessageTitle("No Appointment Found in History");
+                        controller.SetMessageDescription("Please accept contract to view appointment in here");
+                    }
+                }
+                return;
+            }
             for (Appointment appointment : _availableAppointment){
                 if (_availableAppointment.indexOf(appointment) >= _startIndex && _availableAppointment.indexOf(appointment) < _endIndex){
                     FXMLLoader appointmentRowLoader = NodeHelper.LoadFXMLLoader(ResourceLoader.LoadURL("/fxml/Component/AppointmentRow.fxml"));
