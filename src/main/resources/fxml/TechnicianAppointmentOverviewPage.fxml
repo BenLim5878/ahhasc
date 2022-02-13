@@ -51,7 +51,7 @@
                                           <Font name="Nunito Regular" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Lim Zheng Wei" textFill="#4c4c4c">
+                                    <Label fx:id="userNameLabel" text="Lim Zheng Wei" textFill="#4c4c4c">
                                        <font>
                                           <Font name="Nunito Bold" size="24.0" />
                                        </font>

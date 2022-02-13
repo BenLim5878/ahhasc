@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 public class TechnicianAppointmentOverviewPage implements Initializable, IDynamicContent {
 
     @FXML
-    private Label activeAppointmentMessage, completedAppointmentText, feedbackSubmittedText, paymentReceivedText, greetingText;
+    private Label activeAppointmentMessage, completedAppointmentText, feedbackSubmittedText, paymentReceivedText, greetingText, userNameLabel;
     @FXML
     private TechnicianMenuLayout layoutController;
     @FXML
@@ -48,6 +48,7 @@ public class TechnicianAppointmentOverviewPage implements Initializable, IDynami
             greetingText.setText("Good evening,");
         }
         this._technician = (Technician) Session.GetInstance().LoggedUser;
+        userNameLabel.setText(this._technician.FullName);
         LoadStatData();
         LoadUpcomingAppointments();
     }
@@ -111,7 +112,7 @@ public class TechnicianAppointmentOverviewPage implements Initializable, IDynami
 
     @FXML
     private void toBrowseAppointment() throws IOException {
-        WindowApp.SetScene("technicianAppointmentBrowsePage.fxml");
+        WindowApp.SetScene("TechnicianAppointmentBrowsePage.fxml");
     }
 
     @Override

@@ -187,7 +187,7 @@ public class AppointmentDetails implements IDynamicContent {
 
     private void LoadRoomData(){
         // Room ID
-        roomIDText.setText(String.format("Room %s", _appointment.BookingCustomer.Room.getRoomID()));
+        roomIDText.setText(String.format("Room %s", _appointment.BookingCustomer.Room.Unit));
         // Floor
         floorNumberText.setText(String.format("Floor %s",_appointment.BookingCustomer.Room.Floor));
         // Block
