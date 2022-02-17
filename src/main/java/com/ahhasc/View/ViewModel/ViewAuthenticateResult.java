@@ -29,9 +29,11 @@ public class ViewAuthenticateResult{
     }
 
     public String getAuthenticatedUser() {
-        if (AuthenticatedUser.getID() != null){
-            User user = DataAccess.GetInstance().UserController.GetUserByID(AuthenticatedUser.getID());
-            return user.FullName;
+        if (AuthenticatedUser != null){
+            if (AuthenticatedUser.getID() != null) {
+                User user = DataAccess.GetInstance().UserController.GetUserByID(AuthenticatedUser.getID());
+                return user.FullName;
+            }
         }
         return "none";
     }

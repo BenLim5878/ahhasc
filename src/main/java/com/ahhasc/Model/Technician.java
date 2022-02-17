@@ -5,8 +5,6 @@ import java.util.Locale;
 
 public class Technician extends User {
     private int TechnicianID;
-    public ArrayList<Appointment> ActiveDuty = new ArrayList<Appointment>();
-    public ArrayList<Appointment> AddedDuty = new ArrayList<Appointment>();
     public String Specialization;
     public String Description;
 
